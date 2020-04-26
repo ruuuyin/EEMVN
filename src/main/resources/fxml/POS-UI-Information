@@ -1,0 +1,23 @@
+Login       :       POSLogin.fxml           -- Cashier and Administration Login UI
+                        |
+pos.Main Menu   :       POSDashboard.fxml       -- The pos.Main menu of the program where the main navigation button are located
+                        |
+Functions   :       POSCashier.fxml,POSCustomerAccount.fxml
+
+
+    Function 1  :   POSCashier.fxml     -- UI for Cashier
+                        |
+        Layer 2 :   POSCheckout.fxml, POSDiscount.fxml, POSPriceInquiry.fxml, POSScanItem.fxml
+
+    Function 2  :   POSCustomerAccount.fxml  -- UI form managing Customer accounts
+                        |
+        Layer 2 :   POSCustomerAccountForm.fxml, POSSelectedCardInfo.fxml, POSCustomerEdit
+                        |
+            Layer 3 :   POSCardInformation.fxml
+
+
+
+
+
+
+Utilities   :   POSDialogContainer.fxml     -- this will serve as the container for a stack-based UI which is it has parent node to rely on

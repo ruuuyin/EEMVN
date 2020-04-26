@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="509.0" style="-fx-background-color: white;" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pos.pckg.controller.POSAddBalance">
+   <children>
+      <AnchorPane prefHeight="472.0" prefWidth="510.0">
+         <children>
+            <HBox layoutX="14.0" layoutY="14.0" prefHeight="186.0" prefWidth="490.0" styleClass="controls-container" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+               <children>
+                  <VBox prefHeight="242.0" prefWidth="248.0">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="5.0" top="10.0" />
+                     </HBox.margin>
+                     <children>
+                        <Label prefHeight="18.0" prefWidth="243.0" styleClass="lbl-name" text="Card ID">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="2.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="lblCardID" prefHeight="18.0" prefWidth="243.0" styleClass="lbl-value" text="0000000">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label prefHeight="18.0" prefWidth="243.0" styleClass="lbl-name" text="Card Owner">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="2.0" right="2.0" top="4.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="lblCardOwner" prefHeight="18.0" prefWidth="243.0" styleClass="lbl-value" text="Owner">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label prefHeight="18.0" prefWidth="243.0" styleClass="lbl-name" text="Remaining Balance">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="2.0" right="2.0" top="4.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="lblRemainingBalance" prefHeight="18.0" prefWidth="243.0" styleClass="lbl-value" text="0.0">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label prefHeight="18.0" prefWidth="243.0" styleClass="lbl-name" text="Past Reload">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="2.0" right="2.0" top="4.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="lblPastReload" prefHeight="18.0" prefWidth="243.0" styleClass="lbl-value" text="MM-DD-YYYY">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <ImageView fx:id="ivRfid" fitHeight="195.0" fitWidth="213.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/pos-scan.gif" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+            <VBox layoutX="24.0" layoutY="229.0" prefHeight="245.0" prefWidth="490.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+               <children>
+                  <TextField fx:id="tfAddBalance" alignment="CENTER" disable="true" onKeyReleased="#tfAddBalanceOnKeyReleased" prefHeight="50.0" prefWidth="390.0" promptText="Add Balance">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="50.0" right="50.0" top="30.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+                  <Label prefHeight="20.0" prefWidth="518.0" styleClass="lbl-name" text="New Balance">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="lblNewBalance" prefHeight="20.0" prefWidth="556.0" styleClass="lbl-value" text="0.0">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox prefHeight="78.0" prefWidth="470.0" styleClass="controls-container">
+                     <children>
+                        <JFXButton onAction="#btnCancelOnAction" prefHeight="67.0" prefWidth="186.0" styleClass="btn-danger" text="Cancel">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton onAction="#btnProceedOnAction" prefHeight="67.0" prefWidth="261.0" styleClass="btn-high" text="Proceed">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

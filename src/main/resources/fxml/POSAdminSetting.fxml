@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.6" prefWidth="1111.6" style="-fx-background-color: white;" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pos.pckg.controller.POSAdminSetting">
+    <children>
+        <AnchorPane prefHeight="400.0" prefWidth="600.0">
+            <children>
+                <HBox alignment="CENTER" layoutX="120.0" layoutY="171.0" prefHeight="604.0" prefWidth="1112.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                    <children>
+                        <VBox alignment="CENTER" prefHeight="604.0" prefWidth="314.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <VBox alignment="CENTER" minHeight="-Infinity" prefHeight="265.0" prefWidth="369.0" style="-fx-background-color: white; -fx-border-radius: 8px; -fx-background-radius: 8px;">
+                                    <children>
+                                        <Label prefHeight="30.0" prefWidth="556.0" styleClass="lbl-name" text="Business Information">
+                                            <font>
+                                                <Font name="System Bold" size="20.0" />
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <VBox fx:id="contBusiness" disable="true" prefHeight="167.0" prefWidth="323.0" styleClass="controls-container">
+                                            <VBox.margin>
+                                                <Insets left="20.0" right="20.0" top="10.0" />
+                                            </VBox.margin>
+                                            <children>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="321.0" VBox.vgrow="ALWAYS">
+                                                    <children>
+                                                        <Label prefHeight="59.0" prefWidth="103.0" text="Business Name" />
+                                                        <TextField fx:id="tfBName" prefHeight="50.0" prefWidth="227.0" promptText="Required" HBox.hgrow="ALWAYS" />
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                                    </VBox.margin>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="321.0" VBox.vgrow="ALWAYS">
+                                                    <children>
+                                                        <Label prefHeight="59.0" prefWidth="103.0" text="Address" />
+                                                        <TextField fx:id="tfBAddress" prefHeight="50.0" prefWidth="227.0" promptText="Required" HBox.hgrow="ALWAYS" />
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                                    </VBox.margin>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="321.0" VBox.vgrow="ALWAYS">
+                                                    <children>
+                                                        <Label prefHeight="59.0" prefWidth="103.0" text="Email" />
+                                                        <TextField fx:id="tfBEmail" prefHeight="50.0" prefWidth="227.0" promptText="Optional" HBox.hgrow="ALWAYS" />
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                                    </VBox.margin>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="321.0" VBox.vgrow="ALWAYS">
+                                                    <children>
+                                                        <Label prefHeight="59.0" prefWidth="103.0" text="Phone No." />
+                                                        <TextField fx:id="tfBPhone" prefHeight="50.0" prefWidth="227.0" promptText="Required" HBox.hgrow="ALWAYS" />
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                                    </VBox.margin>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                                            <VBox.margin>
+                                                <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+                                            </VBox.margin>
+                                            <children>
+                                                <JFXButton fx:id="btnBCancel" disable="true" onAction="#btnMainOnAction" prefHeight="36.0" prefWidth="92.0" styleClass="controls-container" text="Cancel">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets right="4.0" />
+                                                    </HBox.margin>
+                                                </JFXButton>
+                                                <JFXButton fx:id="btnBEdit" layoutX="241.0" layoutY="19.0" onAction="#btnMainOnAction" prefHeight="36.0" prefWidth="92.0" styleClass="btn-high" text="Edit">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                </JFXButton>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </VBox.margin>
+                                    <effect>
+                                        <DropShadow color="#868585" height="29.9" radius="13.7075" width="26.93" />
+                                    </effect>
+                                </VBox>
+                            </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="409.0" layoutY="10.0" prefHeight="604.0" prefWidth="314.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <VBox alignment="CENTER" minHeight="-Infinity" prefHeight="265.0" prefWidth="369.0" style="-fx-background-color: white; -fx-border-radius: 8px; -fx-background-radius: 8px;">
+                                    <children>
+                                        <Label prefHeight="30.0" prefWidth="556.0" styleClass="lbl-name" text="Administrator's Information">
+                                            <font>
+                                                <Font name="System Bold" size="20.0" />
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <VBox fx:id="contAdmin" disable="true" prefHeight="167.0" prefWidth="323.0" styleClass="controls-container">
+                                            <VBox.margin>
+                                                <Insets left="20.0" right="20.0" top="10.0" />
+                                            </VBox.margin>
+                                            <children>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="321.0" VBox.vgrow="ALWAYS">
+                                                    <children>
+                                                        <Label prefHeight="59.0" prefWidth="103.0" text="User ID" />
+                                                        <TextField fx:id="tfAUserId" editable="false" prefHeight="50.0" prefWidth="227.0" HBox.hgrow="ALWAYS" />
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                                    </VBox.margin>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="321.0" VBox.vgrow="ALWAYS">
+                                                    <children>
+                                                        <Label prefHeight="59.0" prefWidth="103.0" text="First Name" />
+                                                        <TextField fx:id="tfAFirstName" prefHeight="50.0" prefWidth="227.0" promptText="Required" HBox.hgrow="ALWAYS" />
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                                    </VBox.margin>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="321.0" VBox.vgrow="ALWAYS">
+                                                    <children>
+                                                        <Label prefHeight="59.0" prefWidth="103.0" text="MI" />
+                                                        <TextField fx:id="tfAMiddleInitial" prefHeight="50.0" prefWidth="227.0" promptText="Optional" HBox.hgrow="ALWAYS" />
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                                    </VBox.margin>
+                                                </HBox>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="321.0" VBox.vgrow="ALWAYS">
+                                                    <children>
+                                                        <Label prefHeight="59.0" prefWidth="103.0" text="Last Name" />
+                                                        <TextField fx:id="tfLastName" prefHeight="50.0" prefWidth="227.0" promptText="Required" HBox.hgrow="ALWAYS" />
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                                    </VBox.margin>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                                            <VBox.margin>
+                                                <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+                                            </VBox.margin>
+                                            <children>
+                                                <JFXButton fx:id="btnACancel" disable="true" onAction="#btnMainOnAction" prefHeight="36.0" prefWidth="92.0" styleClass="controls-container" text="Cancel">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets right="4.0" />
+                                                    </HBox.margin>
+                                                </JFXButton>
+                                                <JFXButton fx:id="btnAEdit" layoutX="241.0" layoutY="19.0" onAction="#btnMainOnAction" prefHeight="36.0" prefWidth="92.0" styleClass="btn-high" text="Edit">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                </JFXButton>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </VBox.margin>
+                                    <effect>
+                                        <DropShadow color="#868585" height="29.9" radius="13.7075" width="26.93" />
+                                    </effect>
+                                </VBox>
+                            </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="252.0" layoutY="10.0" prefHeight="604.0" prefWidth="314.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <VBox alignment="CENTER" minHeight="-Infinity" prefHeight="265.0" prefWidth="369.0" style="-fx-background-color: white; -fx-border-radius: 8px; -fx-background-radius: 8px;">
+                                    <children>
+                                        <Label prefHeight="30.0" prefWidth="556.0" styleClass="lbl-name" text="Others">
+                                            <font>
+                                                <Font name="System Bold" size="20.0" />
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <VBox fx:id="contOthers" disable="true" prefHeight="167.0" prefWidth="323.0" styleClass="controls-container">
+                                            <VBox.margin>
+                                                <Insets left="20.0" right="20.0" top="10.0" />
+                                            </VBox.margin>
+                                            <children>
+                                                <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="321.0" VBox.vgrow="ALWAYS">
+                                                    <children>
+                                                        <Label prefHeight="59.0" prefWidth="103.0" text="Minimum Balance" />
+                                                        <TextField fx:id="tfBalance" prefHeight="27.0" prefWidth="193.0" promptText="Required" HBox.hgrow="ALWAYS" />
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                                    </VBox.margin>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                                            <VBox.margin>
+                                                <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+                                            </VBox.margin>
+                                            <children>
+                                                <JFXButton fx:id="btnOCancel" disable="true" onAction="#btnMainOnAction" prefHeight="36.0" prefWidth="92.0" styleClass="controls-container" text="Cancel">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets right="4.0" />
+                                                    </HBox.margin>
+                                                </JFXButton>
+                                                <JFXButton fx:id="btnOEdit" layoutX="241.0" layoutY="19.0" onAction="#btnMainOnAction" prefHeight="36.0" prefWidth="92.0" styleClass="btn-high" text="Edit">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                </JFXButton>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                    <effect>
+                                        <DropShadow color="#868585" height="29.9" radius="13.7075" width="26.93" />
+                                    </effect>
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </VBox.margin>
+                                </VBox>
+                            </children>
+                        </VBox>
+                    </children>
+            </HBox>
+         </children></AnchorPane>
+   </children>
+</StackPane>

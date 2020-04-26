@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity"
+           prefHeight="505.0" prefWidth="468.0" style="-fx-background-color: white;" stylesheets="@../style/style.css"
+           xmlns="http://javafx.com/javafx/8.0.171" fx:controller="pos.pckg.controller.POSAdminNewUser">
+    <children>
+        <AnchorPane prefHeight="400.0" prefWidth="600.0">
+            <children>
+                <VBox layoutX="198.0" layoutY="46.0" prefHeight="478.0" prefWidth="582.0" AnchorPane.bottomAnchor="0.0"
+                      AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <children>
+                        <Label prefHeight="30.0" prefWidth="556.0" styleClass="lbl-name" text="New User">
+                            <VBox.margin>
+                                <Insets bottom="10.0" left="20.0" right="20.0" top="20.0"/>
+                            </VBox.margin>
+                            <font>
+                                <Font name="System Bold" size="20.0"/>
+                            </font>
+                        </Label>
+                        <VBox prefHeight="359.0" prefWidth="428.0" styleClass="controls-container">
+                            <VBox.margin>
+                                <Insets left="20.0" right="20.0"/>
+                            </VBox.margin>
+                            <children>
+                                <HBox layoutX="11.0" layoutY="11.0" prefHeight="45.0" prefWidth="540.0">
+                                    <children>
+                                        <Label prefHeight="35.0" prefWidth="137.0" styleClass="lbl-name" text="User ID">
+                                            <font>
+                                                <Font name="System Bold" size="14.0"/>
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                            </HBox.margin>
+                                        </Label>
+                                        <TextField fx:id="tfUid" alignment="CENTER" editable="false" prefHeight="35.0"
+                                                   prefWidth="347.0" promptText="Required">
+                                            <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                            </HBox.margin>
+                                            <font>
+                                                <Font size="14.0"/>
+                                            </font>
+                                        </TextField>
+                                    </children>
+                                </HBox>
+                                <HBox prefHeight="45.0" prefWidth="540.0">
+                                    <children>
+                                        <Label prefHeight="35.0" prefWidth="137.0" styleClass="lbl-name"
+                                               text="First Name">
+                                            <font>
+                                                <Font name="System Bold" size="14.0"/>
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                            </HBox.margin>
+                                        </Label>
+                                        <TextField fx:id="tfFirstName" alignment="CENTER" prefHeight="35.0"
+                                                   prefWidth="347.0" promptText="Required">
+                                            <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                            </HBox.margin>
+                                            <font>
+                                                <Font size="14.0"/>
+                                            </font>
+                                        </TextField>
+                                    </children>
+                                </HBox>
+                                <HBox prefHeight="45.0" prefWidth="540.0">
+                                    <children>
+                                        <Label prefHeight="35.0" prefWidth="98.0" styleClass="lbl-name"
+                                               text="Middle Initial">
+                                            <font>
+                                                <Font name="System Bold" size="14.0"/>
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                            </HBox.margin>
+                                        </Label>
+                                        <TextField fx:id="tfMiddleInitial" alignment="CENTER" prefHeight="35.0"
+                                                   prefWidth="307.0" promptText="Optional">
+                                            <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                            </HBox.margin>
+                                            <font>
+                                                <Font size="14.0"/>
+                                            </font>
+                                        </TextField>
+                                    </children>
+                                </HBox>
+                                <HBox prefHeight="45.0" prefWidth="540.0">
+                                    <children>
+                                        <Label prefHeight="35.0" prefWidth="98.0" styleClass="lbl-name"
+                                               text="Last Name">
+                                            <font>
+                                                <Font name="System Bold" size="14.0"/>
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                            </HBox.margin>
+                                        </Label>
+                                        <TextField fx:id="tfLastName" alignment="CENTER" prefHeight="35.0"
+                                                   prefWidth="307.0" promptText="Required">
+                                            <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                            </HBox.margin>
+                                            <font>
+                                                <Font size="14.0"/>
+                                            </font>
+                                        </TextField>
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER_LEFT" prefHeight="82.0" prefWidth="426.0">
+                                    <children>
+                                        <Label prefHeight="30.0" prefWidth="104.0" styleClass="lbl-name" text="Access">
+                                            <font>
+                                                <Font name="System Bold" size="14.0"/>
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                            </HBox.margin>
+                                        </Label>
+                                        <HBox prefHeight="43.0" prefWidth="314.0">
+                                            <children>
+                                                <HBox alignment="CENTER"/>
+                                                <VBox alignment="CENTER_LEFT" prefHeight="72.0" prefWidth="109.0"
+                                                      HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <JFXCheckBox id="cashier" fx:id="cbCashier" prefHeight="18.0"
+                                                                     prefWidth="130.0" text="Cashier Panel">
+                                                            <VBox.margin>
+                                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                                                            </VBox.margin>
+                                                        </JFXCheckBox>
+                                                        <JFXCheckBox id="inventory" fx:id="chInventory" layoutX="31.0"
+                                                                     layoutY="23.0" prefHeight="18.0" prefWidth="132.0"
+                                                                     text="Inventory">
+                                                            <VBox.margin>
+                                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                                                            </VBox.margin>
+                                                        </JFXCheckBox>
+                                                        <JFXCheckBox id="customer" fx:id="chCustomer" layoutX="10.0"
+                                                                     layoutY="46.0" prefHeight="18.0" prefWidth="143.0"
+                                                                     text="Customer">
+                                                            <VBox.margin>
+                                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                                                            </VBox.margin>
+                                                        </JFXCheckBox>
+                                                    </children>
+                                                </VBox>
+                                                <VBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0"
+                                                      prefHeight="72.0" prefWidth="109.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <JFXCheckBox id="transaction" fx:id="chTransactions"
+                                                                     prefHeight="18.0" prefWidth="130.0"
+                                                                     text="Transactions">
+                                                            <VBox.margin>
+                                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                                                            </VBox.margin>
+                                                        </JFXCheckBox>
+                                                        <JFXCheckBox id="system" fx:id="chSystemLogs" layoutX="31.0"
+                                                                     layoutY="23.0" prefHeight="18.0" prefWidth="132.0"
+                                                                     text="System Logs">
+                                                            <VBox.margin>
+                                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                                                            </VBox.margin>
+                                                        </JFXCheckBox>
+                                                        <JFXCheckBox id="admin" fx:id="chAdmin" layoutX="10.0"
+                                                                     layoutY="46.0" prefHeight="18.0" prefWidth="143.0"
+                                                                     text="Admin Panel">
+                                                            <VBox.margin>
+                                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                                                            </VBox.margin>
+                                                        </JFXCheckBox>
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </HBox>
+                                <HBox prefHeight="45.0" prefWidth="540.0">
+                                    <children>
+                                        <Label prefHeight="35.0" prefWidth="98.0" styleClass="lbl-name"
+                                               text="New Password">
+                                            <font>
+                                                <Font name="System Bold" size="14.0"/>
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                            </HBox.margin>
+                                        </Label>
+                                        <PasswordField fx:id="pfNew" alignment="CENTER" prefHeight="35.0"
+                                                       prefWidth="307.0" promptText="Required (Min. Length = 5)">
+                                            <font>
+                                                <Font size="14.0"/>
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                            </HBox.margin>
+                                        </PasswordField>
+                                    </children>
+                                </HBox>
+                                <HBox layoutX="11.0" layoutY="273.0" prefHeight="45.0" prefWidth="540.0">
+                                    <children>
+                                        <Label prefHeight="35.0" prefWidth="98.0" styleClass="lbl-name" text="Confirm">
+                                            <font>
+                                                <Font name="System Bold" size="14.0"/>
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                            </HBox.margin>
+                                        </Label>
+                                        <PasswordField fx:id="pfConfirm" alignment="CENTER" prefHeight="35.0"
+                                                       prefWidth="307.0" promptText="Required (Min. Length = 5)">
+                                            <font>
+                                                <Font size="14.0"/>
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                            </HBox.margin>
+                                        </PasswordField>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="65.0" prefWidth="542.0">
+                            <VBox.margin>
+                                <Insets bottom="20.0" left="20.0" right="20.0" top="10.0"/>
+                            </VBox.margin>
+                            <children>
+                                <JFXButton fx:id="btnCancel" onAction="#btnCancelOnAction" prefHeight="44.0"
+                                           prefWidth="118.0" styleClass="controls-container" text="Cancel">
+                                    <font>
+                                        <Font name="System Bold" size="16.0"/>
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                    </HBox.margin>
+                                </JFXButton>
+                                <JFXButton fx:id="btnCreate" onAction="#btnCreateOnAction" prefHeight="44.0"
+                                           prefWidth="164.0" styleClass="btn-high" text="Create">
+                                    <font>
+                                        <Font name="System Bold" size="16.0"/>
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets bottom="5.0" left="5.0" top="5.0"/>
+                                    </HBox.margin>
+                                </JFXButton>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
+    </children>
+</StackPane>

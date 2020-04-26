@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="826.0" style="-fx-background-color: white;" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pos.pckg.controller.POSPriceInquiry">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <BorderPane layoutX="121.0" layoutY="66.0" prefHeight="566.0" prefWidth="826.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <left>
+                  <VBox prefHeight="566.0" prefWidth="457.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <JFXTreeTableView fx:id="ttvProductResult" onKeyReleased="#ttvProductResultOnKeyReleased" onMouseClicked="#ttvProductResultOnMouseClicked" prefHeight="493.0" prefWidth="457.0">
+                           <VBox.margin>
+                              <Insets bottom="20.0" left="20.0" right="10.0" />
+                           </VBox.margin>
+                           <columns>
+                              <TreeTableColumn fx:id="chProductCode" prefWidth="128.80001831054688" text="Product Code" />
+                              <TreeTableColumn fx:id="chProductName" prefWidth="294.39996337890625" text="Product Name" />
+                           </columns>
+                        </JFXTreeTableView>
+                     </children>
+                  </VBox>
+               </left>
+               <right>
+                  <VBox prefHeight="566.0" prefWidth="375.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <VBox prefHeight="331.0" prefWidth="345.0" styleClass="controls-container">
+                           <VBox.margin>
+                              <Insets left="10.0" right="20.0" />
+                           </VBox.margin>
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Label prefHeight="18.0" prefWidth="347.0" text="Item ID" />
+                                    <Label fx:id="lblItemID" prefHeight="18.0" prefWidth="347.0">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </VBox>
+                              <VBox layoutX="11.0" layoutY="11.0">
+                                 <children>
+                                    <Label prefHeight="18.0" prefWidth="347.0" text="Item Code" />
+                                    <Label fx:id="lblItemCode" prefHeight="18.0" prefWidth="347.0">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </VBox>
+                              <VBox layoutX="11.0" layoutY="55.0">
+                                 <children>
+                                    <Label prefHeight="18.0" prefWidth="347.0" text="Item Name" />
+                                    <Label fx:id="lblItemName" prefHeight="18.0" prefWidth="347.0">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </VBox>
+                              <VBox layoutX="11.0" layoutY="99.0">
+                                 <children>
+                                    <Label prefHeight="18.0" prefWidth="347.0" text="Unit Price" />
+                                    <Label fx:id="lblUnitPrice" prefHeight="18.0" prefWidth="347.0">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </VBox>
+                              <VBox layoutX="11.0" layoutY="143.0">
+                                 <children>
+                                    <Label prefHeight="18.0" prefWidth="347.0" text="Remaining Stock(s)" />
+                                    <Label fx:id="lblStocks" prefHeight="18.0" prefWidth="347.0">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </VBox>
+                           </children>
+                        </VBox>
+                        <JFXButton fx:id="btnClose" onAction="#btnCloseOnAction" prefHeight="51.0" prefWidth="345.0" styleClass="controls-container" text="Close">
+                           <VBox.margin>
+                              <Insets bottom="20.0" left="10.0" right="20.0" top="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </VBox>
+               </right>
+               <top>
+                  <HBox alignment="CENTER_LEFT" prefHeight="73.0" prefWidth="832.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label prefHeight="37.0" prefWidth="74.0" text="Search:">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tfSearch" prefHeight="40.0" prefWidth="438.0" promptText="Search by Name or Product Code">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <JFXButton fx:id="btnSearch" contentDisplay="GRAPHIC_ONLY" onAction="#btnSearchOnAction" prefHeight="41.0" prefWidth="85.0" styleClass="btn-high">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/pos-search-white.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+               </top>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

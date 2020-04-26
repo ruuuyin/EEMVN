@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="623.0" prefWidth="519.0" style="-fx-background-color: white;" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pos.pckg.controller.POSTransactionRetailView">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <VBox layoutX="6.0" prefHeight="443.0" prefWidth="523.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="37.0" prefWidth="523.0">
+                     <children>
+                        <Label prefHeight="57.0" prefWidth="125.0" styleClass="lbl-name" text="Transaction No. :">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblTransactionNo" layoutX="10.0" layoutY="10.0" prefHeight="57.0" prefWidth="125.0" styleClass="lbl-value" text="0">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="20.0" right="20.0" top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="37.0" prefWidth="523.0">
+                     <children>
+                        <Label prefHeight="37.0" prefWidth="132.0" styleClass="lbl-name" text="Type : ">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tfType" editable="false" prefHeight="32.0" prefWidth="374.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="37.0" prefWidth="523.0">
+                     <children>
+                        <Label prefHeight="37.0" prefWidth="132.0" styleClass="lbl-name" text="User :">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tfUser" editable="false" prefHeight="32.0" prefWidth="374.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="37.0" prefWidth="523.0">
+                     <children>
+                        <Label prefHeight="37.0" prefWidth="132.0" styleClass="lbl-name" text="Customer :">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tfCustomer" editable="false" prefHeight="32.0" prefWidth="374.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="37.0" prefWidth="523.0">
+                     <children>
+                        <Label prefHeight="37.0" prefWidth="132.0" styleClass="lbl-name" text="Date : ">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tfDate" editable="false" prefHeight="32.0" prefWidth="374.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="186.0" prefHeight="37.0" prefWidth="523.0">
+                     <children>
+                        <Label prefHeight="37.0" prefWidth="132.0" styleClass="lbl-name" text="Time : ">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tfTime" editable="false" prefHeight="32.0" prefWidth="374.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="37.0" prefWidth="523.0">
+                     <children>
+                        <Label prefHeight="37.0" prefWidth="132.0" styleClass="lbl-name" text="Order ID : ">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tfOrder" editable="false" prefHeight="32.0" prefWidth="374.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="155.0" prefWidth="519.0">
+                     <children>
+                        <JFXTreeTableView fx:id="ttvOrders" prefHeight="204.0" prefWidth="519.0">
+                           <columns>
+                              <TreeTableColumn fx:id="chItemID" editable="false" prefWidth="104.0" styleClass="center-cell-item" text="Item ID" />
+                              <TreeTableColumn fx:id="chItemName" editable="false" prefWidth="139.0" styleClass="center-cell-item" text="Item Name" />
+                              <TreeTableColumn fx:id="chQuantity" editable="false" prefWidth="135.0" styleClass="center-cell-item" text="Quantity" />
+                              <TreeTableColumn fx:id="chTotal" editable="false" prefWidth="135.0" styleClass="center-cell-item" text="Total Price" />
+                           </columns>
+                           <columnResizePolicy>
+                              <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                           </HBox.margin>
+                        </JFXTreeTableView>
+                     </children>
+                  </HBox>
+                  <VBox prefHeight="121.0" prefWidth="479.0">
+                     <children>
+                        <Label fx:id="lblNumItems" prefHeight="29.0" prefWidth="479.0" styleClass="lbl-name" text="Number of Items :">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblNumTypes" layoutX="10.0" layoutY="10.0" prefHeight="24.0" prefWidth="479.0" styleClass="lbl-name" text="Number of Types :">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblSubtotal" layoutX="10.0" layoutY="40.0" prefHeight="24.0" prefWidth="479.0" styleClass="lbl-name" text="Subtotal :">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblDiscount" layoutX="10.0" layoutY="64.0" prefHeight="24.0" prefWidth="479.0" styleClass="lbl-name" text="Discount(%) : ">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblTotal" layoutX="10.0" layoutY="88.0" prefHeight="24.0" prefWidth="479.0" styleClass="lbl-name" text="Total :">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="75.0" prefWidth="519.0">
+                     <children>
+                        <JFXButton onAction="#btnCloseOnAction" prefHeight="44.0" prefWidth="176.0" styleClass="controls-container" text="Close">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

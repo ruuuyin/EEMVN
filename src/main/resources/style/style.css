@@ -1,0 +1,162 @@
+*{
+    -posWhite:#ffffff;
+    -posFocusBlue:#147696;
+    -posDarkBlue:#0b4457;
+    -posBaseBlue:#1ca8d6;
+    -posHighBlue:#1eb2e3;
+    -posNormalBlue:#1994bd;
+    -posImportant:#0a4da6;
+    -posDanger:#ff6475;
+    -fx-text-fill:-posDarkBlue;
+}
+
+.root-Pane{
+    -fx-background-color: -posWhite;
+}
+
+.container-pane{
+    -fx-border-color: -posFocusBlue;
+    -fx-border-radius: 5px;
+}
+.text-input{
+    -fx-border-color: -posBaseBlue;
+    -fx-border-radius: 5px;
+
+    -fx-prompt-text-fill: -posBaseBlue;
+}
+.btn-important{
+    -fx-background-color:-posBaseBlue;
+    -fx-border-radius: 5px;
+    -fx-border-color:-posNormalBlue;
+    -fx-text-fill:-posWhite;
+}
+
+.btn-high{
+    -fx-background-color:-posImportant;
+    -fx-border-radius: 5px;
+    -fx-text-fill:-posWhite;
+}
+
+.btn-danger{
+    -fx-background-color:-posDanger;
+    -fx-border-radius: 5px;
+    -fx-text-fill:-posWhite;
+}
+
+.lbl-name{
+    -fx-text-fill: -posNormalBlue;
+}
+
+.lbl-value{
+    -fx-text-fill: -posFocusBlue;
+}
+
+.jfx-radio-button{
+    -jfx-selected-color: -posHighBlue;
+    -fx-rippler-fill:-posHighBlue;
+}
+/*TABLE VIEW DESIGN*/
+
+.tree-table-view{
+    -fx-border-color: #c5c5c5;
+    -fx-tree-table-color:-posWhite;
+}
+
+.tree-table-view .jfx-rippler{
+    -fx-rippler-fill:-posNormalBlue;
+}
+
+.tree-table-view .column-header,
+.tree-table-view .column-header-background,
+.tree-table-view .column-header-background .filler{
+    -fx-background-color: -posImportant;
+}
+
+.tree-table-view .column-header{
+    -fx-border-width:1 0 1 0;
+    -fx-border-color:-posImportant;
+}
+
+.tree-table-view .column-header .label{
+    -fx-text-fill: -posWhite;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 14px;
+    -fx-padding: 12px;
+}
+
+.tree-table-cell:odd{
+    -fx-background-color: #f0f0f0;
+}
+
+.tree-table-header{
+    -fx-rippler-fill:-posNormalBlue;
+}
+
+.tree-table-view:focused .tree-table-row-cell:selected .tree-table-cell{
+    -fx-background-color:-posImportant !important;
+}
+
+.tree-table-view:focused .tree-table-row-cell:selected .tree-table-cell{
+    -fx-text-fill: -posWhite;
+}
+.tree-table-view .tree-table-row-cell{
+    -fx-font-size: 12px;
+
+    -fx-font-weight: bolder;
+}
+
+
+.center-cell-item{
+    -fx-alignment: CENTER;
+}
+
+
+/*POSCashier LEFT-SIDE*/
+.controls-container{
+    -fx-border-radius:5px;
+    -fx-border-color: #c5c5c5;
+}
+#controls-button-container{
+    -fx-border-color: #c5c5c5;
+    -fx-border-width:1 0 1 0;
+}
+
+.icon-button{
+    -fx-border-radius: 500px;
+    -fx-background-radius: 500px;
+}
+
+.product-labels{
+    -fx-text-fill: #000000;
+}
+
+.product-buttons{
+    -fx-text-fill: #000000;
+    -fx-border-color: #d4d4d4;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+}
+
+.value-box-even {
+    -fx-background-color: #f5f5f5;
+}
+
+
+/*********************************************************************************************************************************************************/
+
+.combo-box {
+    -fx-background-color: white;
+    -fx-border-color: -posBaseBlue;
+    -fx-border-radius: 5px;
+    -fx-prompt-text-fill: -posBaseBlue !important;
+}
+
+.combo-box:focused {
+    -fx-border-color: -posNormalBlue;
+}
+
+
+.jfx-check-box {
+    -jfx-checked-color: -posHighBlue;
+    -fx-rippler-fill: -posHighBlue;
+}

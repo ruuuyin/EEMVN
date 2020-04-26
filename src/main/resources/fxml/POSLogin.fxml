@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="rootPane" prefHeight="679.0" prefWidth="1137.0" styleClass="root-Pane" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pos.pckg.controller.POSLogin">
+   <children>
+      <AnchorPane prefHeight="640.0" prefWidth="932.0" styleClass="root-Pane">
+         <children>
+            <VBox alignment="CENTER" layoutX="569.0" layoutY="183.0" prefHeight="679.0" prefWidth="1137.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <VBox alignment="BOTTOM_CENTER" minHeight="-Infinity" prefHeight="129.0" styleClass="lbl-name" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Label fx:id="lblStoreName" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="86.0" prefWidth="680.0" styleClass="lbl-value" text="Store Name">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <HBox alignment="CENTER" minHeight="-Infinity" prefHeight="415.0" prefWidth="1137.0">
+                     <children>
+                        <VBox fx:id="vbControlCenteredBox" alignment="CENTER" prefHeight="421.0" prefWidth="367.0" styleClass="container-pane">
+                           <children>
+                              <ImageView fitHeight="83.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
+                                 <VBox.margin>
+                                    <Insets bottom="30.0" top="30.0" />
+                                 </VBox.margin>
+                                 <image>
+                                    <Image url="@../img/pos-security.png" />
+                                 </image>
+                              </ImageView>
+                              <TextField fx:id="tfEmpID" onKeyReleased="#fieldsOnKeyReleased" prefHeight="39.0" prefWidth="343.0" promptText="Employee ID">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="50.0" right="50.0" />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                 </padding>
+                              </TextField>
+                              <PasswordField fx:id="pfPassword" onKeyReleased="#fieldsOnKeyReleased" promptText="Password">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="50.0" right="50.0" />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                 </padding>
+                              </PasswordField>
+                              <JFXButton fx:id="btnSignIn" disable="true" onAction="#btnSignInOnAction" prefHeight="47.0" prefWidth="265.0" styleClass="btn-important" text="Sign In" textFill="WHITE">
+                                 <VBox.margin>
+                                    <Insets bottom="100.0" left="50.0" right="50.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <VBox alignment="BOTTOM_CENTER" minHeight="-Infinity" prefHeight="129.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Label fx:id="lblSystemInfo" alignment="BOTTOM_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="18.0" prefWidth="1138.0" text="Point of Sale System v1.0.0">
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

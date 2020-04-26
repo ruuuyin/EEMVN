@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="rootPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="679.0" prefWidth="1137.0" style="-fx-background-color: white;" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pos.pckg.controller.POSTransactionLogs">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1097.0" styleClass="controls-container" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+               <children>
+                  <JFXButton fx:id="btnHome" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" onAction="#btnHomeOnAction" prefHeight="35.0" prefWidth="35.0" styleClass="icon-button" text="Button">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/pos-home.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="925.0" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <children>
+                        <TextField fx:id="tfTransac" prefHeight="36.0" prefWidth="332.0" promptText="Transaction # or Customer Name">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <ComboBox fx:id="cbType" prefHeight="36.0" prefWidth="190.0" promptText="Type">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </ComboBox>
+                        <ComboBox fx:id="cbUser" layoutX="15.0" layoutY="21.0" prefHeight="36.0" prefWidth="190.0" promptText="User">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin></ComboBox>
+                        <DatePicker fx:id="dpDate" prefHeight="36.0" prefWidth="206.0" promptText="Date" style="-fx-font-size: 14px;">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </DatePicker>
+                        <JFXButton fx:id="btnSearch" contentDisplay="GRAPHIC_ONLY" onAction="#btnSearchOnAction" prefHeight="36.0" prefWidth="63.0" styleClass="btn-important" text="Go">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/pos-search-white.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="58.0" prefWidth="505.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="58.0" prefWidth="209.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <HBox>
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="175.0" text="Result(s):" />
+                                    <Label fx:id="lblResult" prefHeight="20.0" prefWidth="163.0" text="0">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox>
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="174.0" text="All" />
+                                    <Label fx:id="lblAll" prefHeight="20.0" prefWidth="162.0" text="0">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <JFXButton fx:id="btnSave" contentDisplay="RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#btnSaveOnAction" prefHeight="38.0" prefWidth="171.0" styleClass="btn-important" text="Save as PDF">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/pos-pdf.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets bottom="10.0" right="15.0" top="10.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <JFXTreeTableView fx:id="ttvLogTable" layoutX="15.0" layoutY="85.0" prefHeight="576.0" prefWidth="1107.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="117.0">
+               <columns>
+                  <TreeTableColumn fx:id="chTransactionID" editable="false" prefWidth="104.0" styleClass="center-cell-item" text="Transaction No." />
+                  <TreeTableColumn fx:id="chType" editable="false" prefWidth="264.0" styleClass="center-cell-item" text="Type" />
+                  <TreeTableColumn fx:id="chUser" editable="false" prefWidth="135.0" styleClass="center-cell-item" text="User" />
+                  <TreeTableColumn fx:id="chCustomer" editable="false" prefWidth="277.0" styleClass="center-cell-item" text="Customer" />
+                  <TreeTableColumn fx:id="chDate" editable="false" prefWidth="139.0" styleClass="center-cell-item" text="Date" />
+                  <TreeTableColumn fx:id="chSourceId" editable="false" prefWidth="135.0" styleClass="center-cell-item" text="Type ID" />
+                  <TreeTableColumn fx:id="chAction" editable="false" prefWidth="135.0" sortable="false" styleClass="center-cell-item" text="Action" />
+               </columns>
+               <columnResizePolicy>
+                  <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </JFXTreeTableView>
+            <JFXButton layoutX="15.0" layoutY="82.0" onAction="#btnSearchAllOnAction" prefHeight="26.0" prefWidth="107.0" styleClass="controls-container" text="Search All" />
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
