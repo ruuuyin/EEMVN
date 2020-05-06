@@ -117,6 +117,7 @@ public class POSInitialSetup implements Initializable {
             misc.dbHandler.closeConnection();
             createReportDirectory();
             openLogin();
+            misc.sceneManipulator.closeStage(rootPane);
         }
 
     }

@@ -54,6 +54,7 @@ public class RFIDReaderInterface {
      * @param splashText_line2 os the text that will be displayed on the splash screen on line 2
      */
     public RFIDReaderInterface(String splashText_line1, String splashText_line2) {
+
         System.out.println("Establishing connection with the device");
 
         System.out.println("Fetching available COM Ports...");

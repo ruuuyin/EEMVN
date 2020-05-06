@@ -86,8 +86,9 @@ public class BackgroundProcesses {
             }
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            return "";
         }
-       return "";
     }
+
+
 }
