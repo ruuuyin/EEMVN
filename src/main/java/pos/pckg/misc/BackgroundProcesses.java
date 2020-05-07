@@ -46,7 +46,7 @@ public class BackgroundProcesses {
 
     public static void changeSecondaryFormStageStatus(short status){
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(BackgroundProcesses.getFile("etc\\cache-secondary-status.file")));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(BackgroundProcesses.getFile(DataBridgeDirectory.DOCUMENT+"etc\\cache-secondary-status.file")));
             writer.write(String.valueOf(status));
             writer.close();
         } catch (IOException e) {
@@ -66,7 +66,7 @@ public class BackgroundProcesses {
     public static void populateComboFromFile(String fileName, ComboBox cb) {
         try {
             cb.getItems().clear();
-            Scanner scan = new Scanner(new FileInputStream("etc\\loader\\" + fileName + ".file"));
+            Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\loader\\" + fileName + ".file"));
             do {
                 cb.getItems().add(scan.nextLine());
             } while (scan.hasNextLine());
@@ -78,7 +78,7 @@ public class BackgroundProcesses {
     public static String getStoreName(){
         Scanner scan = null;
         try {
-            scan = new Scanner(new FileInputStream("etc\\initial.file"));
+            scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\initial.file"));
             if (scan.hasNextLine()){
                 return  scan.nextLine();
             }else{

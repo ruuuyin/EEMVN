@@ -1,7 +1,8 @@
 package pos.pckg.misc;
 
 public class DataBridgeDirectory {
-    private static final String ROOT = "etc/";
+    public static  String DOCUMENT = System.getProperty("user.home")+"/Documents/";
+    private static final String ROOT = DOCUMENT+"etc/";
     private static final String LOADER = ROOT+"loader/";
     private static final String STATUS = ROOT+"status/";
     public enum  FILES {

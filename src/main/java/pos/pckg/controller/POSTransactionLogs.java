@@ -22,6 +22,7 @@ import pos.pckg.MiscInstances;
 import pos.pckg.controller.message.POSMessage;
 import pos.pckg.data.entity.Transactions;
 import pos.pckg.misc.BackgroundProcesses;
+import pos.pckg.misc.DataBridgeDirectory;
 import pos.pckg.misc.SceneManipulator;
 
 import java.io.BufferedWriter;
@@ -280,7 +281,7 @@ public class POSTransactionLogs implements Initializable {
 
         log.getBtnView().setOnAction(e -> {
             try {
-                BufferedWriter bwriter = new BufferedWriter(new FileWriter("etc\\cache-tl-view.file"));
+                BufferedWriter bwriter = new BufferedWriter(new FileWriter(DataBridgeDirectory.DOCUMENT+"etc\\cache-tl-view.file"));
                 String str = "";
                 String sql ;
                 if (log.getType().equals("Retail")){

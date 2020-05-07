@@ -13,6 +13,7 @@ import javafx.scene.text.FontWeight;
 import pos.Main;
 import pos.pckg.controller.POSDialog;
 import pos.pckg.misc.BackgroundProcesses;
+import pos.pckg.misc.DataBridgeDirectory;
 import pos.pckg.misc.DirectoryHandler;
 import pos.pckg.misc.SceneManipulator;
 
@@ -32,7 +33,7 @@ public class POSMessage  {
     private static void writeToCache(String message,String title,String directory) {
         String cacheData = title+"\n"+message+"\n"+directory;
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(BackgroundProcesses.getFile("etc\\cache-message.file")));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(BackgroundProcesses.getFile(DataBridgeDirectory.DOCUMENT+"etc\\cache-message.file")));
             writer.write(cacheData);
             writer.close();
         } catch (IOException e) {
@@ -57,7 +58,7 @@ public class POSMessage  {
     }
 
     public static void showMessage(StackPane parent,String message,String title,MessageType messageType){
-        BackgroundProcesses.createCacheDir("etc\\cache-message.file");
+        BackgroundProcesses.createCacheDir(DataBridgeDirectory.DOCUMENT+"etc\\cache-message.file");
         writeToCache(message,title,getIconDirectory(messageType));
         sceneManipulator.openDialog(parent,"POSSimpleMessage");
 

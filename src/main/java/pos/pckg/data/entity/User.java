@@ -13,6 +13,7 @@ import pos.pckg.controller.POSAdminUser;
 import pos.pckg.controller.message.POSMessage;
 import pos.pckg.data.CacheWriter;
 import pos.pckg.misc.BackgroundProcesses;
+import pos.pckg.misc.DataBridgeDirectory;
 import pos.pckg.misc.DirectoryHandler;
 import pos.pckg.misc.SceneManipulator;
 
@@ -94,7 +95,7 @@ public class User extends RecursiveTreeObject<User> implements CacheWriter {
                 "-fx-text-fill:#ffffff;");
         btnEdit.setOnAction(e->{
             //TODO Edit Action
-            writeToCache("etc\\cache-admin-selected-user.file");
+            writeToCache(DataBridgeDirectory.DOCUMENT+"etc\\cache-admin-selected-user.file");
             manipulator.openDialog((StackPane) BackgroundProcesses.getRoot(btnEdit),"POSAdminEditUser");
         });
 
@@ -115,7 +116,7 @@ public class User extends RecursiveTreeObject<User> implements CacheWriter {
 
         btnpass.setOnAction(e->{
             //TODO Edit Action
-            writeToCache("etc\\cache-admin-selected-user.file");
+            writeToCache(DataBridgeDirectory.DOCUMENT+"etc\\cache-admin-selected-user.file");
             manipulator.openDialog((StackPane) BackgroundProcesses.getRoot(btnpass),"POSAdminPinRecovery");
         });
 

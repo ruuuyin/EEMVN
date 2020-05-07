@@ -9,6 +9,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.StackPane;
 import pos.pckg.controller.message.POSMessage;
 import pos.pckg.misc.BackgroundProcesses;
+import pos.pckg.misc.DataBridgeDirectory;
 import pos.pckg.misc.InputRestrictor;
 
 import java.io.BufferedWriter;
@@ -61,7 +62,7 @@ public class POSCustomerAccountForm extends POSCustomerAccount {
         InputRestrictor.limitInput(tfMobileNumber,11);
         InputRestrictor.numbersInput(tfMobileNumber);
         InputRestrictor.limitInput(tfMiddleInitial,3);
-        BackgroundProcesses.createCacheDir("etc\\cache-new-account.file");
+        BackgroundProcesses.createCacheDir(DataBridgeDirectory.DOCUMENT+"etc\\cache-new-account.file");
     }
 
     @FXML
@@ -78,7 +79,7 @@ public class POSCustomerAccountForm extends POSCustomerAccount {
             POSMessage.showMessage(rootPane,"The mobile number you've entered is invalid","Invalid Value", POSMessage.MessageType.ERROR);
         }else{
             String newAcc = "";
-            BufferedWriter writer = new BufferedWriter(new FileWriter(BackgroundProcesses.getFile("etc\\cache-new-account.file")));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(BackgroundProcesses.getFile(DataBridgeDirectory.DOCUMENT+"etc\\cache-new-account.file")));
             newAcc += tfFirstName.getText();
             newAcc += "\n"+(tfMiddleInitial.getText().equals("")?"N/A":tfMiddleInitial.getText());
             newAcc += "\n"+tfLastName.getText();

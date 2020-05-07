@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import pos.pckg.misc.DataBridgeDirectory;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -43,7 +44,7 @@ public class POSSystemLogsView extends POSSystemLogs implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            Scanner scan = new Scanner(new FileInputStream("etc\\cache-sl-view.file"));
+            Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\cache-sl-view.file"));
             lblLogID.setText(scan.nextLine());
             tfType.setText(scan.nextLine());
             tfAction.setText(scan.nextLine());

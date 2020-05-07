@@ -16,6 +16,7 @@ import pos.pckg.MiscInstances;
 import pos.pckg.controller.message.POSMessage;
 import pos.pckg.data.AES;
 import pos.pckg.misc.BackgroundProcesses;
+import pos.pckg.misc.DataBridgeDirectory;
 import pos.pckg.misc.InputRestrictor;
 
 import java.io.FileInputStream;
@@ -60,7 +61,7 @@ public class POSCardInformation extends POSCustomerAccount implements Initializa
         InputRestrictor.numbersInput(tfInitialBalance);
         initCardScan();
         try {
-            Scanner scan = new Scanner(new FileInputStream("etc\\cache-others.file"));
+            Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\cache-others.file"));
             minimum = Double.parseDouble(scan.nextLine());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -133,7 +134,7 @@ public class POSCardInformation extends POSCustomerAccount implements Initializa
         Main.rfid.PINCreate();
          pinThread = new Timeline(new KeyFrame(Duration.ZERO, e -> {
             try {
-                Scanner scan = new Scanner(new FileInputStream("etc\\pckg.rfid-cache.file"));
+                Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\rfid-cache.file"));
                 while (scan.hasNextLine()){
                     String []scanned = scan.nextLine().split("=");
                     if (scanned[0].equals("PINCreate")){
@@ -160,7 +161,7 @@ public class POSCardInformation extends POSCustomerAccount implements Initializa
     }
 
     private final void doInsertion() throws FileNotFoundException, SQLException {
-        Scanner scan = new Scanner(new FileInputStream("etc\\cache-new-account.file"));
+        Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\cache-new-account.file"));
         String firstName,middleInitial,lastName,address,email,mobile,sex;
         firstName = scan.nextLine();
         middleInitial = scan.nextLine();
@@ -242,7 +243,7 @@ public class POSCardInformation extends POSCustomerAccount implements Initializa
             Main.rfid.scan();
             cardIdScannerThread = new Timeline(new KeyFrame(Duration.ZERO, e -> {
                 try {
-                    Scanner scan = new Scanner(new FileInputStream("etc\\pckg.rfid-cache.file"));
+                    Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\rfid-cache.file"));
                     while (scan.hasNextLine()){
                         String scanned[] = scan.nextLine().split("=");
                         if (scanned[0].equals("scan")){

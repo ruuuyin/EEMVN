@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import pos.pckg.MiscInstances;
 import pos.pckg.data.CacheWriter;
 import pos.pckg.misc.BackgroundProcesses;
 import pos.pckg.misc.DataBridgeDirectory;
@@ -64,6 +65,9 @@ public class Main extends Application {
             stage.show();
 
         }else{
+            resetDatabase();
+            BackgroundProcesses.changeSecondaryFormStageStatus((short)2);
+            BackgroundProcesses.createCacheDir(DataBridgeDirectory.DOCUMENT+"etc/cache-secondary-table.file");
 
             Parent root = FXMLLoader.load(getClass().getResource("/"+ DirectoryHandler.FXML+ "POSInitialSetup.fxml"));
             stage.setScene(new Scene(root));
@@ -84,11 +88,11 @@ public class Main extends Application {
     public static RFIDReaderInterface rfid = new RFIDReaderInterface("Welcome to " + BackgroundProcesses.getStoreName(),"");
 
     private static void createLocalDataDirectory(){
-        File file = new File("etc");
+        File file = new File(DataBridgeDirectory.DOCUMENT+"etc");
         if (!file.exists()){
             file.mkdir();
-            new File("etc/loader").mkdir();
-            new File("etc/status").mkdir();
+            new File(DataBridgeDirectory.DOCUMENT+"etc/loader").mkdir();
+            new File(DataBridgeDirectory.DOCUMENT+"etc/status").mkdir();
 
             String localData[] = DataBridgeDirectory.getAllLocalDataBridge();
             for (int i = 0;i<localData.length;i++){
@@ -118,7 +122,7 @@ public class Main extends Application {
                 else if(i==25){
                     cacheWriter("jdbc:mysql://localhost:3306/ee-pos?useTimezone=true&serverTimezone=UTC\n" +
                             "root\n" +
-                            "N/A",localData[i]);
+                            "00000",localData[i]);
                 }
 
 
@@ -135,5 +139,48 @@ public class Main extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private static void resetDatabase(){
+        MiscInstances misc = new MiscInstances();
+        misc.dbHandler.startConnection();
+        misc.dbHandler.execUpdate("truncate card");
+        misc.dbHandler.closeConnection();
+
+        misc.dbHandler.startConnection();
+        misc.dbHandler.execUpdate("truncate customer");
+        misc.dbHandler.closeConnection();
+
+        misc.dbHandler.startConnection();
+        misc.dbHandler.execUpdate("truncate item");
+        misc.dbHandler.closeConnection();
+
+        misc.dbHandler.startConnection();
+        misc.dbHandler.execUpdate("truncate orderitem");
+        misc.dbHandler.closeConnection();
+
+        misc.dbHandler.startConnection();
+        misc.dbHandler.execUpdate("truncate orders");
+        misc.dbHandler.closeConnection();
+
+        misc.dbHandler.startConnection();
+        misc.dbHandler.execUpdate("truncate recredit");
+        misc.dbHandler.closeConnection();
+
+        misc.dbHandler.startConnection();
+        misc.dbHandler.execUpdate("truncate returnitem");
+        misc.dbHandler.closeConnection();
+
+        misc.dbHandler.startConnection();
+        misc.dbHandler.execUpdate("truncate systemlogs");
+        misc.dbHandler.closeConnection();
+
+        misc.dbHandler.startConnection();
+        misc.dbHandler.execUpdate("truncate transaction");
+        misc.dbHandler.closeConnection();
+
+        misc.dbHandler.startConnection();
+        misc.dbHandler.execUpdate("truncate user");
+        misc.dbHandler.closeConnection();
     }
 }

@@ -14,6 +14,7 @@ import pos.pckg.controller.POSCustomerAccount;
 import pos.pckg.controller.message.POSMessage;
 import pos.pckg.data.CacheWriter;
 import pos.pckg.misc.BackgroundProcesses;
+import pos.pckg.misc.DataBridgeDirectory;
 import pos.pckg.misc.DirectoryHandler;
 import pos.pckg.misc.SceneManipulator;
 
@@ -154,7 +155,7 @@ public class Customer extends RecursiveTreeObject<Customer> implements CacheWrit
                 "-fx-text-fill:#ffffff;");
 
         button.setOnAction(e->{
-            writeToCache("etc\\cache-selected-customer.file:etc\\cache-card-info.file");
+            writeToCache(DataBridgeDirectory.DOCUMENT+"etc\\cache-selected-customer.file:"+DataBridgeDirectory.DOCUMENT+"etc\\cache-card-info.file");
             manipulator.openDialog((StackPane) getRoot(button), "POSSelectedCardInfo");
         });
     }
@@ -191,7 +192,7 @@ public class Customer extends RecursiveTreeObject<Customer> implements CacheWrit
                 "-fx-text-fill:#ffffff;");
 
         btnEdit.setOnAction(e->{
-            writeToCache("etc\\cache-selected-customer.file:etc\\cache-card-info.file");
+            writeToCache(DataBridgeDirectory.DOCUMENT+"etc\\cache-selected-customer.file:"+DataBridgeDirectory.DOCUMENT+"etc\\cache-card-info.file");
             manipulator.openDialog((StackPane) this.getRoot(btnEdit),"POSCustomerEdit");
         });
 

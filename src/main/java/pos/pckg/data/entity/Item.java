@@ -17,6 +17,7 @@ import pos.pckg.controller.POSInventory;
 import pos.pckg.controller.message.POSMessage;
 import pos.pckg.data.CacheWriter;
 import pos.pckg.misc.BackgroundProcesses;
+import pos.pckg.misc.DataBridgeDirectory;
 import pos.pckg.misc.DirectoryHandler;
 import pos.pckg.misc.SceneManipulator;
 
@@ -156,7 +157,7 @@ public class Item extends RecursiveTreeObject<Item> implements CacheWriter {
                 "-fx-text-fill:#ffffff;");
 
         button.setOnAction(e->{
-            writeToCache("etc\\cache-selected-item.file");
+            writeToCache(DataBridgeDirectory.DOCUMENT+"etc\\cache-selected-item.file");
             manipulator.openDialog((StackPane) getRoot(button), "POSRestock");
         });
     }
@@ -184,7 +185,7 @@ public class Item extends RecursiveTreeObject<Item> implements CacheWriter {
                 "-fx-text-fill:#ffffff;");
 
         btnEdit.setOnAction(e->{
-            writeToCache("etc\\cache-selected-item.file");
+            writeToCache(DataBridgeDirectory.DOCUMENT+"etc\\cache-selected-item.file");
             manipulator.openDialog((StackPane) this.getRoot(btnEdit),"POSItemEdit");
         });
 

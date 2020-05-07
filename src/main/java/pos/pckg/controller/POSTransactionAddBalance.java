@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import pos.pckg.misc.DataBridgeDirectory;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -50,7 +51,7 @@ public class POSTransactionAddBalance extends POSTransactionLogs implements Init
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Scanner scan = null;
         try {
-            scan = new Scanner(new FileInputStream("etc\\cache-tl-view.file"));
+            scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\cache-tl-view.file"));
             lblTransactionNo.setText(scan.nextLine());
             tfType.setText(scan.nextLine());
             tfUser.setText(scan.nextLine());

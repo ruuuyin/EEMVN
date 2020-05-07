@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import pos.pckg.misc.DataBridgeDirectory;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -56,7 +57,7 @@ public class POSTransactionReturn extends POSTransactionLogs implements Initiali
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            Scanner scan = new Scanner(new FileInputStream("etc\\cache-tl-view.file"));
+            Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\cache-tl-view.file"));
             lblTransactionNo.setText(scan.nextLine());
             tfType.setText(scan.nextLine());
             tfUser.setText(scan.nextLine());

@@ -17,6 +17,7 @@ import javafx.util.Duration;
 import pos.Main;
 import pos.pckg.controller.message.POSMessage;
 import pos.pckg.misc.BackgroundProcesses;
+import pos.pckg.misc.DataBridgeDirectory;
 import pos.pckg.misc.InputRestrictor;
 
 import java.io.*;
@@ -130,7 +131,7 @@ public class POSAddBalance extends POSCashier implements Initializable {
             cardIdScannerThread = new Timeline(new KeyFrame(Duration.ZERO, e -> {
                 Scanner scan = null;
                 try {
-                    scan = new Scanner(new FileInputStream("etc\\pckg.rfid-cache.file"));
+                    scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\rfid-cache.file"));
                 } catch (FileNotFoundException ex) {
                     ex.printStackTrace();
                 }
@@ -174,7 +175,7 @@ public class POSAddBalance extends POSCashier implements Initializable {
                         + result.getInt("customerID");
 
                 customerID = result.getInt("customerID")+"";
-                writer = new BufferedWriter(new FileWriter("etc\\cache-reload-card.file"));
+                writer = new BufferedWriter(new FileWriter(DataBridgeDirectory.DOCUMENT+"etc\\cache-reload-card.file"));
                 writer.write(data);
                 writer.close();
                 misc.dbHandler.closeConnection();
@@ -190,7 +191,7 @@ public class POSAddBalance extends POSCashier implements Initializable {
                         result.getString("middleInitial")+"\n"+
                         result.getString("lastName")+"\n"+
                         phone+"\n";
-                writer = new BufferedWriter(new FileWriter("etc\\cache-reload-customer.file"));
+                writer = new BufferedWriter(new FileWriter(DataBridgeDirectory.DOCUMENT+"etc\\cache-reload-customer.file"));
                 writer.write(data);
                 writer.close();
                 misc.dbHandler.closeConnection();
@@ -216,12 +217,12 @@ public class POSAddBalance extends POSCashier implements Initializable {
     }
 
     private void populateData() throws FileNotFoundException {
-        scan = new Scanner(new FileInputStream("etc\\cache-reload-card.file"));
+        scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\cache-reload-card.file"));
         lblCardID.setText(scan.nextLine());
         lblRemainingBalance.setText(scan.nextLine());
         lblPastReload.setText(scan.nextLine());
 
-        scan = new Scanner(new FileInputStream("etc\\cache-reload-customer.file"));
+        scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\cache-reload-customer.file"));
         scan.nextLine();
         lblCardOwner.setText(scan.nextLine()+" "+scan.nextLine()+". "+(scan.nextLine().charAt(0))+".");
         lblNewBalance.setText(lblRemainingBalance.getText());

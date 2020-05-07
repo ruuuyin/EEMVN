@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.layout.StackPane;
 import pos.pckg.controller.message.POSMessage;
+import pos.pckg.misc.DataBridgeDirectory;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -98,7 +99,7 @@ public class POSPasswordManagement extends POSDashboard implements Initializable
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Scanner scan = null;
         try {
-            scan = new Scanner(new FileInputStream("etc\\cache-user.file"));
+            scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\cache-user.file"));
             userID = scan.nextLine();
         } catch (FileNotFoundException e) {
             e.printStackTrace();

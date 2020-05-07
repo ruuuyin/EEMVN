@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import pos.pckg.controller.message.POSMessage;
 import pos.pckg.misc.BackgroundProcesses;
+import pos.pckg.misc.DataBridgeDirectory;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -34,7 +35,7 @@ public class POSSimpleMessage extends POSMessage implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            Scanner scan = new Scanner(new FileInputStream(BackgroundProcesses.getFile("etc\\cache-message.file")));
+            Scanner scan = new Scanner(new FileInputStream(BackgroundProcesses.getFile(DataBridgeDirectory.DOCUMENT+"etc\\cache-message.file")));
             lblTitle.setText(scan.nextLine());
             lblMessage.setText(scan.nextLine());
             ivIcon.setImage(new Image(scan.nextLine()));

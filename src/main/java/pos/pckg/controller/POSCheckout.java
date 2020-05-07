@@ -16,6 +16,7 @@ import pos.Main;
 import pos.pckg.controller.message.POSMessage;
 import pos.pckg.data.AES;
 import pos.pckg.misc.BackgroundProcesses;
+import pos.pckg.misc.DataBridgeDirectory;
 import pos.pckg.misc.DirectoryHandler;
 
 import java.io.*;
@@ -81,7 +82,7 @@ public class POSCheckout extends POSCashier {
         cacheClear();
         try{
             Main.rfid.cancelOperation();
-            writer = new BufferedWriter(new FileWriter("etc\\cache-secondary-check-card.file"));
+            writer = new BufferedWriter(new FileWriter(DataBridgeDirectory.DOCUMENT+"etc\\cache-secondary-check-card.file"));
             writer.write("0");
             writer.close();
             gsmSignalThread.play();
@@ -152,7 +153,7 @@ public class POSCheckout extends POSCashier {
             Main.rfid.scan();
             cardIdScannerThread = new Timeline(new KeyFrame(Duration.ZERO, e -> {
                 try {
-                    Scanner scan = new Scanner(new FileInputStream("etc\\pckg.rfid-cache.file"));
+                    Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\rfid-cache.file"));
                     while (scan.hasNextLine()){
                         String scanned[] = scan.nextLine().split("=");
                         if (scanned[0].equals("scan")){
@@ -185,14 +186,14 @@ public class POSCheckout extends POSCashier {
 
     private void checkPIN() throws FileNotFoundException {
 
-        scan = new Scanner(new FileInputStream("etc\\cache-checkout-card.file"));
+        scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\cache-checkout-card.file"));
         for (int i  = 1; i<=6;i++) System.out.println(scan.nextLine());
         forChallenge= AES.decrypt(scan.nextLine(), POSCashier.S_KEY);//TODO Under observation
         Main.rfid.PINChallenge(forChallenge);
 
         checkPINThread = new Timeline(new KeyFrame(Duration.ZERO, e -> {
             try {
-                scan = new Scanner(new FileInputStream("etc\\pckg.rfid-cache.file"));
+                scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\rfid-cache.file"));
                 while (scan.hasNextLine()){
                     String scanned[] = scan.nextLine().split("=");
                     if (scanned[0].equals("PINChallenge")){
@@ -237,7 +238,7 @@ public class POSCheckout extends POSCashier {
                     + result.getString("PIN");
 
                 customerID = result.getInt("customerID")+"";
-                writer = new BufferedWriter(new FileWriter("etc\\cache-checkout-card.file"));
+                writer = new BufferedWriter(new FileWriter(DataBridgeDirectory.DOCUMENT+"etc\\cache-checkout-card.file"));
                 writer.write(data);
                 writer.close();
                 misc.dbHandler.closeConnection();
@@ -256,7 +257,7 @@ public class POSCheckout extends POSCashier {
                         result.getString("address")+"\n"+
                         phone+"\n"+
                         result.getString("emailAddress");
-                writer = new BufferedWriter(new FileWriter("etc\\cache-checkout-customer.file"));
+                writer = new BufferedWriter(new FileWriter(DataBridgeDirectory.DOCUMENT+"etc\\cache-checkout-customer.file"));
                 writer.write(data);
                 writer.close();
                 misc.dbHandler.closeConnection();
@@ -282,13 +283,13 @@ public class POSCheckout extends POSCashier {
     }
     private void populateData() throws IOException {
 
-        scan = new Scanner(new FileInputStream("etc\\cache-checkout-card.file"));
+        scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\cache-checkout-card.file"));
         lblCardID.setText(scan.nextLine());
         lblBalance.setText(scan.nextLine());
-        scan = new Scanner(new FileInputStream("etc\\cache-checkout-customer.file"));
+        scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\cache-checkout-customer.file"));
         scan.nextLine();
         lblOwner.setText(scan.nextLine()+" "+scan.nextLine()+". "+scan.nextLine());
-        scan = new Scanner(new FileInputStream("etc\\cache-checkout-total.file"));
+        scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\cache-checkout-total.file"));
         if (scan.hasNextLine())
             lblCheckout.setText(scan.nextLine());
 
@@ -297,7 +298,7 @@ public class POSCheckout extends POSCashier {
         lblRemaining.setStyle(total>0.0?"-fx-text-fill:#147696":"-fx-text-fill:#ff6475");
         lblRemaining.setText(total+"");
 
-        writer = new BufferedWriter(new FileWriter("etc\\cache-secondary-check-card.file"));
+        writer = new BufferedWriter(new FileWriter(DataBridgeDirectory.DOCUMENT+"etc\\cache-secondary-check-card.file"));
         writer.write("1");
         writer.close();
 
@@ -306,7 +307,7 @@ public class POSCheckout extends POSCashier {
     }//TODO Edit the color of the Remaining balance if it turns negative
 
     private void cacheClear() throws IOException {
-        writer = new BufferedWriter(new FileWriter("etc\\cache-secondary-check-card.file"));
+        writer = new BufferedWriter(new FileWriter(DataBridgeDirectory.DOCUMENT+"etc\\cache-secondary-check-card.file"));
         writer.write("0");
         writer.close();
     }

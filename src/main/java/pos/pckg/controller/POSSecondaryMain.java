@@ -22,6 +22,7 @@ import javafx.util.Duration;
 import pos.pckg.MiscInstances;
 import pos.pckg.data.entity.ProductOrder;
 import pos.pckg.misc.BackgroundProcesses;
+import pos.pckg.misc.DataBridgeDirectory;
 import pos.pckg.misc.SceneManipulator;
 
 import java.io.FileInputStream;
@@ -81,7 +82,7 @@ public class POSSecondaryMain implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        BackgroundProcesses.createCacheDir("etc\\cache-secondary-table.file");
+        BackgroundProcesses.createCacheDir(DataBridgeDirectory.DOCUMENT+"etc\\cache-secondary-table.file");
         loadTable();
         checkoutStatusRefresher();
         statusChecker();
@@ -142,7 +143,7 @@ public class POSSecondaryMain implements Initializable {
     private void queryAllData(){
         productList.clear();
         try {
-            scan = new Scanner(new FileInputStream("etc\\cache-secondary-table.file"));
+            scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\cache-secondary-table.file"));
             while(scan.hasNextLine()){
                 String p[] = scan.nextLine().split(":");
                 ProductOrder product = new ProductOrder(p[0],p[1]
@@ -160,7 +161,7 @@ public class POSSecondaryMain implements Initializable {
     private void statusChecker(){
         statusThread = new Timeline(new KeyFrame(Duration.ZERO, e -> {
             try {
-                Scanner scan = new Scanner(new FileInputStream("etc\\cache-secondary-status.file"));
+                Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\cache-secondary-status.file"));
                 short status = Short.parseShort(scan.nextLine());
                 switch (status){
                     case 0:

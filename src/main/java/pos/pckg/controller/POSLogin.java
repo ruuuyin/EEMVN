@@ -17,6 +17,7 @@ import pos.pckg.MiscInstances;
 import pos.pckg.controller.message.POSMessage;
 import pos.pckg.data.CacheWriter;
 import pos.pckg.misc.BackgroundProcesses;
+import pos.pckg.misc.DataBridgeDirectory;
 import pos.pckg.misc.InputRestrictor;
 
 import java.io.BufferedWriter;
@@ -65,7 +66,7 @@ public class POSLogin implements Initializable, CacheWriter {
         BackgroundProcesses.changeSecondaryFormStageStatus((short) 2);
         InputRestrictor.numbersInput(tfEmpID);
         InputRestrictor.limitInput(tfEmpID,5);
-        BackgroundProcesses.createCacheDir("etc\\cache-user.file");
+        BackgroundProcesses.createCacheDir(DataBridgeDirectory.DOCUMENT+"etc\\cache-user.file");
         misc  = new MiscInstances();
     }
 
@@ -83,7 +84,7 @@ public class POSLogin implements Initializable, CacheWriter {
                 lname = result.getString("lastName");
                 accountType = result.getInt("accountType");
                 access = result.getString("access");
-                writeToCache("etc\\cache-user.file");
+                writeToCache(DataBridgeDirectory.DOCUMENT+"etc\\cache-user.file");
 
                 misc.dbHandler.closeConnection();
                 POSMessage.showConfirmationMessage(rootPane

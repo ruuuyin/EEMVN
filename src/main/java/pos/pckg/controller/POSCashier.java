@@ -27,10 +27,7 @@ import pos.pckg.MiscInstances;
 import pos.pckg.controller.message.POSMessage;
 import pos.pckg.data.entity.Item;
 import pos.pckg.data.entity.ProductOrder;
-import pos.pckg.misc.BackgroundProcesses;
-import pos.pckg.misc.DirectoryHandler;
-import pos.pckg.misc.InputRestrictor;
-import pos.pckg.misc.SceneManipulator;
+import pos.pckg.misc.*;
 
 import java.io.*;
 import java.net.URL;
@@ -167,7 +164,7 @@ public class POSCashier implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         BackgroundProcesses.changeSecondaryFormStageStatus((short)0);
-        BackgroundProcesses.createCacheDir("etc\\cache-secondary-table.file");
+        BackgroundProcesses.createCacheDir(DataBridgeDirectory.DOCUMENT+"etc\\cache-secondary-table.file");
         //pckg.misc = new pckg.MiscInstances();
         queryAllItem();
         InputRestrictor.numbersInput(this.tfQuantity);
@@ -175,9 +172,9 @@ public class POSCashier implements Initializable {
         BackgroundProcesses.realTimeClock(lblDate);
         loadTable();
         try {
-            Scanner scan = new Scanner(new FileInputStream("etc\\cache-user.file"));
+            Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\cache-user.file"));
             userID = scan.nextLine();
-            scan = new Scanner(new FileInputStream("etc\\cache-user.file"));
+            scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\cache-user.file"));
             scan.nextLine();
             scan.nextLine();
             scan.nextLine();
@@ -204,7 +201,7 @@ public class POSCashier implements Initializable {
     protected void btnCheckoutOnAction(ActionEvent event) throws IOException {
         gsmSignalThread.stop();
         rfidStatus.stop();
-        writer = new BufferedWriter(new FileWriter("etc\\cache-checkout-total.file"));
+        writer = new BufferedWriter(new FileWriter(DataBridgeDirectory.DOCUMENT+"etc\\cache-checkout-total.file"));
         writer.write(lblTotal.getText());
         writer.close();
 
@@ -339,7 +336,7 @@ public class POSCashier implements Initializable {
             }
             checkoutStatusCalculate();
             lblDiscount.setText(String.valueOf(discount));
-            writeToCache("etc\\cache-secondary-table.file");
+            writeToCache(DataBridgeDirectory.DOCUMENT+"etc\\cache-secondary-table.file");
         }),new KeyFrame(Duration.millis(100)));
         itemCountRefresher.setCycleCount(Animation.INDEFINITE);
         itemCountRefresher.play();
@@ -450,7 +447,7 @@ public class POSCashier implements Initializable {
             if (!Main.rfid.isSMSMode()) {
                 try {
                     Main.rfid.getSignalQuality();
-                    Scanner scan = new Scanner(new FileInputStream("etc/status/pckg.rfid-gsm-signal.file"));
+                    Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc/status/rfid-gsm-signal.file"));
                     if (scan.hasNextLine()){
                         String value[] = scan.nextLine().split("=");
                         if (value[0].equals("signalQuality")){
@@ -497,7 +494,7 @@ public class POSCashier implements Initializable {
             if (!Main.rfid.isSMSMode()) {
                 try {
                     Main.rfid.queryDevice();
-                    Scanner scan = new Scanner(new FileInputStream("etc/status/pckg.rfid-device-signal.file"));
+                    Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc/status/rfid-device-signal.file"));
                     if (scan.hasNextLine()){
                         String value[] = scan.nextLine().split("=");
                         if (value[0].equals("deviceConnected")){

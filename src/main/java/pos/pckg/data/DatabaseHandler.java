@@ -1,5 +1,6 @@
 package pos.pckg.data;
 
+import javax.swing.*;
 import java.sql.*;
 
 public class DatabaseHandler {
@@ -25,6 +26,7 @@ public class DatabaseHandler {
         try {
             dbConnection = DriverManager.getConnection(this.dbUrl,this.dbUname,this.dbPass);
         } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,"Cannot connect to the database","Database Error",JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
     }
@@ -39,6 +41,7 @@ public class DatabaseHandler {
             dbStatement = dbConnection.createStatement();
             dbResultSet = dbStatement.executeQuery(sql);
         } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,"Cannot connect to the database","Database Error",JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
         return dbResultSet;
@@ -55,6 +58,7 @@ public class DatabaseHandler {
             dbStatement = dbConnection.createStatement();
             returnedRow = dbStatement.executeUpdate(sql);
         } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,"Cannot connect to the database","Database Error",JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
         return returnedRow;

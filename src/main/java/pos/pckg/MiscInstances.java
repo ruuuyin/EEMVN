@@ -1,6 +1,7 @@
 package pos.pckg;
 
 import pos.pckg.data.DatabaseHandler;
+import pos.pckg.misc.DataBridgeDirectory;
 import pos.pckg.misc.SceneManipulator;
 
 import java.io.FileInputStream;
@@ -20,7 +21,7 @@ public class MiscInstances {
         String url,uname,password;
         try {
             Scanner textScan = new Scanner(
-                    new FileInputStream("etc\\Connection.properties"));
+                    new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\Connection.properties"));
             url = textScan.nextLine();
             uname = textScan.nextLine();
             password = textScan.nextLine();

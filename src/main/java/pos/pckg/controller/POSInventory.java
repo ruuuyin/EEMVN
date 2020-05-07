@@ -24,6 +24,7 @@ import pos.pckg.controller.message.POSMessage;
 import pos.pckg.data.CacheWriter;
 import pos.pckg.data.entity.Item;
 import pos.pckg.misc.BackgroundProcesses;
+import pos.pckg.misc.DataBridgeDirectory;
 import pos.pckg.misc.SceneManipulator;
 
 import java.io.*;
@@ -136,7 +137,7 @@ public class POSInventory implements Initializable, CacheWriter {
     @FXML
     void functionButtonOnAction(ActionEvent event) {
             try {
-                writeToCache("etc\\cache-selected-item.file");
+                writeToCache(DataBridgeDirectory.DOCUMENT+"etc\\cache-selected-item.file");
                 JFXButton selectedButton = (JFXButton) event.getSource();
                 if (selectedButton.equals(this.btnNew)) {
                     sceneManipulator.openDialog(rootPane, "POSNewItem");
@@ -168,7 +169,7 @@ public class POSInventory implements Initializable, CacheWriter {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            Scanner scan = new Scanner(new FileInputStream("etc\\cache-user.file"));
+            Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\cache-user.file"));
             userID = scan.nextLine();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -177,7 +178,7 @@ public class POSInventory implements Initializable, CacheWriter {
         Timeline clock = new Timeline(new KeyFrame(Duration.millis(300), e -> {
             queryAllItems();
             loadTable();
-            BackgroundProcesses.createCacheDir("etc\\cache-selected-item.file");
+            BackgroundProcesses.createCacheDir(DataBridgeDirectory.DOCUMENT+"etc\\cache-selected-item.file");
         }),
                 new KeyFrame(Duration.millis(300))
         );

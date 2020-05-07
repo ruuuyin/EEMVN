@@ -10,6 +10,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.StackPane;
 import pos.pckg.controller.message.POSMessage;
 import pos.pckg.misc.BackgroundProcesses;
+import pos.pckg.misc.DataBridgeDirectory;
 import pos.pckg.misc.InputRestrictor;
 
 import java.io.FileInputStream;
@@ -71,7 +72,7 @@ public class POSCustomerEdit extends POSCustomerAccount {
         InputRestrictor.numbersInput(tfMobileNumber);
         InputRestrictor.limitInput(tfMiddleInitial,3);
         try {
-            Scanner scan = new Scanner(new FileInputStream(BackgroundProcesses.getFile("etc\\cache-selected-customer.file")));
+            Scanner scan = new Scanner(new FileInputStream(BackgroundProcesses.getFile(DataBridgeDirectory.DOCUMENT+"etc\\cache-selected-customer.file")));
             customerID = Integer.parseInt(scan.nextLine());
             lblCustomerID.setText("ID : "+customerID);
             tfFirstName.setText(scan.nextLine());
@@ -190,7 +191,7 @@ public class POSCustomerEdit extends POSCustomerAccount {
     private boolean nothingHasChanged(){
         boolean nothingHasChanged = false ;
         try {
-            Scanner scan = new Scanner(new FileInputStream(BackgroundProcesses.getFile("etc\\cache-selected-customer.file")));
+            Scanner scan = new Scanner(new FileInputStream(BackgroundProcesses.getFile(DataBridgeDirectory.DOCUMENT+"etc\\cache-selected-customer.file")));
             scan.nextLine();
             nothingHasChanged=  (tfFirstName.getText().equals(scan.nextLine()) &&
             tfMiddleInitial.getText().equals(scan.nextLine()) &&

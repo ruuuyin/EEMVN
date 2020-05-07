@@ -9,6 +9,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import pos.pckg.MiscInstances;
 import pos.pckg.controller.message.POSMessage;
+import pos.pckg.misc.DataBridgeDirectory;
 import pos.pckg.misc.InputRestrictor;
 
 import java.io.*;
@@ -79,19 +80,19 @@ public class POSAdminSetting extends POSAdminPanel implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            Scanner scan = new Scanner(new FileInputStream("etc\\initial.file"));
+            Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\initial.file"));
             tfBName.setText(scan.nextLine());
             tfBAddress.setText(scan.nextLine());
             tfBPhone.setText(scan.nextLine());
             tfBEmail.setText(scan.nextLine());
-            scan = new Scanner(new FileInputStream("etc\\cache-user.file"));
+            scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\cache-user.file"));
             tfAUserId.setText(scan.nextLine());
             tfAFirstName.setText(scan.nextLine());
             tfAMiddleInitial.setText(scan.nextLine());
             tfLastName.setText(scan.nextLine());
             isAdmin = scan.nextLine();
             access = scan.nextLine();
-            scan = new Scanner(new FileInputStream("etc\\cache-others.file"));
+            scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\cache-others.file"));
             tfBalance.setText(scan.nextLine());
             InputRestrictor.limitInput(tfAMiddleInitial, 1);
             InputRestrictor.limitInput(tfBPhone, 11);
@@ -150,7 +151,7 @@ public class POSAdminSetting extends POSAdminPanel implements Initializable {
         } else {
             BufferedWriter writer = null;
             try {
-                writer = new BufferedWriter(new FileWriter("etc\\initial.file"));
+                writer = new BufferedWriter(new FileWriter(DataBridgeDirectory.DOCUMENT+"etc\\initial.file"));
                 String business = "";
                 business += tfBName.getText() + "\n" +
                         tfBAddress.getText() + "\n" +
@@ -202,7 +203,7 @@ public class POSAdminSetting extends POSAdminPanel implements Initializable {
             cacheData += this.access;
 
             try {
-                writer = new BufferedWriter(new FileWriter("etc\\cache-user.file"));
+                writer = new BufferedWriter(new FileWriter(DataBridgeDirectory.DOCUMENT+"etc\\cache-user.file"));
                 writer.write(cacheData);
                 writer.close();
             } catch (IOException e) {
@@ -224,7 +225,7 @@ public class POSAdminSetting extends POSAdminPanel implements Initializable {
             POSMessage.showMessage(rootPane, "Please fill all the important fields", "Invalid Value", POSMessage.MessageType.ERROR);
         } else {
             try {
-                BufferedWriter writer = new BufferedWriter(new FileWriter("etc\\cache-others.file"));
+                BufferedWriter writer = new BufferedWriter(new FileWriter(DataBridgeDirectory.DOCUMENT+"etc\\cache-others.file"));
                 String min = tfBalance.getText();
                 writer.write(min);
                 writer.close();

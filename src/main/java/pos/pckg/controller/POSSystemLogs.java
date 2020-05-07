@@ -22,6 +22,7 @@ import pos.pckg.MiscInstances;
 import pos.pckg.controller.message.POSMessage;
 import pos.pckg.data.entity.SystemLog;
 import pos.pckg.misc.BackgroundProcesses;
+import pos.pckg.misc.DataBridgeDirectory;
 import pos.pckg.misc.SceneManipulator;
 
 import java.io.BufferedWriter;
@@ -269,7 +270,7 @@ public class POSSystemLogs implements Initializable {
 
         log.getBtnView().setOnAction(e -> {
             try {
-                BufferedWriter bwriter = new BufferedWriter(new FileWriter("etc\\cache-sl-view.file"));
+                BufferedWriter bwriter = new BufferedWriter(new FileWriter(DataBridgeDirectory.DOCUMENT+"etc\\cache-sl-view.file"));
                 String str = "";
                 String sql ;
                 if (log.getType().equals("Stock Management")){

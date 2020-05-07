@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+import pos.pckg.misc.DataBridgeDirectory;
 import pos.pckg.misc.DirectoryHandler;
 
 import java.io.BufferedWriter;
@@ -72,13 +73,13 @@ public class POSSecondaryCheckout extends POSSecondaryMain {
     private void cardDetect(){
             cardThread = new Timeline(new KeyFrame(Duration.ZERO, e -> {
                 try {
-                    scan = new Scanner(new FileInputStream("etc\\cache-secondary-check-card.file"));
+                    scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\cache-secondary-check-card.file"));
                     if (scan.hasNextLine()){
                         if (scan.nextLine().equals("1")){
 
                             ivPrompt.setImage(new Image(DirectoryHandler.IMG+ "pos-spinner.gif"));
                             lblStatus.setText("Processing transaction...");
-                                //writer = new BufferedWriter(new FileWriter("etc\\cache-secondary-check-card.file"));
+                                //writer = new BufferedWriter(new FileWriter(DataBridgeDirectory.DOCUMENT+"etc\\cache-secondary-check-card.file"));
                                 //writer.write("0");
                                 //writer.close();
 

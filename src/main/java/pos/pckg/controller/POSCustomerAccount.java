@@ -22,6 +22,7 @@ import javafx.util.Duration;
 import pos.pckg.MiscInstances;
 import pos.pckg.data.entity.Customer;
 import pos.pckg.misc.BackgroundProcesses;
+import pos.pckg.misc.DataBridgeDirectory;
 import pos.pckg.misc.SceneManipulator;
 
 import java.io.FileInputStream;
@@ -82,7 +83,7 @@ public class POSCustomerAccount implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            Scanner scan = new Scanner(new FileInputStream("etc\\cache-user.file"));
+            Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\cache-user.file"));
             userID = scan.nextLine();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -90,10 +91,10 @@ public class POSCustomerAccount implements Initializable {
         Timeline clock = new Timeline(new KeyFrame(Duration.millis(300), e -> {
             queryAllItems();
             loadTable();
-            BackgroundProcesses.createCacheDir("etc\\cache-selected-account.file");
-            BackgroundProcesses.createCacheDir("etc\\cache-new-user.file");
-            BackgroundProcesses.createCacheDir("etc\\cache-selected-customer.file");
-            BackgroundProcesses.createCacheDir("etc\\cache-card-info.file");
+            BackgroundProcesses.createCacheDir(DataBridgeDirectory.DOCUMENT+"etc\\cache-selected-account.file");
+            BackgroundProcesses.createCacheDir(DataBridgeDirectory.DOCUMENT+"etc\\cache-new-user.file");
+            BackgroundProcesses.createCacheDir(DataBridgeDirectory.DOCUMENT+"etc\\cache-selected-customer.file");
+            BackgroundProcesses.createCacheDir(DataBridgeDirectory.DOCUMENT+"etc\\cache-card-info.file");
         }),
                 new KeyFrame(Duration.millis(300))
         );

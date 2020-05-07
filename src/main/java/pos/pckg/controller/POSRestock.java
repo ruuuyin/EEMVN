@@ -12,6 +12,7 @@ import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 import pos.pckg.controller.message.POSMessage;
 import pos.pckg.misc.BackgroundProcesses;
+import pos.pckg.misc.DataBridgeDirectory;
 import pos.pckg.misc.InputRestrictor;
 
 import java.io.FileInputStream;
@@ -58,7 +59,7 @@ public class POSRestock extends POSInventory{
         InputRestrictor.numbersInput(tfAddStock);
         InputRestrictor.limitInput(tfAddStock, 3);
         try {
-            Scanner scan = new Scanner(new FileInputStream(BackgroundProcesses.getFile("etc\\cache-selected-item.file")));
+            Scanner scan = new Scanner(new FileInputStream(BackgroundProcesses.getFile(DataBridgeDirectory.DOCUMENT+"etc\\cache-selected-item.file")));
             itemID = Integer.parseInt(scan.nextLine());
             tfItemCode.setText(scan.nextLine());
             tfItemName.setText(scan.nextLine());

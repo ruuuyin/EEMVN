@@ -3,6 +3,7 @@ package pos.pckg.rfid;
 import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm.SerialPortDataListener;
 import com.fazecast.jSerialComm.SerialPortEvent;
+import pos.pckg.misc.DataBridgeDirectory;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -26,9 +27,9 @@ public class RFIDReaderInterface {
     private Scanner serialReader;
     private PrintWriter serialWriter;
     private byte[] bytesRead;
-    private String RFIDCacheFilePath = "etc\\pckg.rfid-cache.file";
-    private String DeviceSignalFilePath = "etc\\status\\pckg.rfid-device-signal.file";
-    private String GSMSignalFilePath = "etc\\status\\pckg.rfid-gsm-signal.file";
+    private String RFIDCacheFilePath = DataBridgeDirectory.DOCUMENT+"etc\\rfid-cache.file";
+    private String DeviceSignalFilePath = DataBridgeDirectory.DOCUMENT+"etc\\status\\rfid-device-signal.file";
+    private String GSMSignalFilePath = DataBridgeDirectory.DOCUMENT+"etc\\status\\rfid-gsm-signal.file";
     private boolean interpretNextByte = false;
     private boolean deviceReady = false;
     private boolean serialCommDebugging = false; // Set to true when checking pckg.data sent/received through serial

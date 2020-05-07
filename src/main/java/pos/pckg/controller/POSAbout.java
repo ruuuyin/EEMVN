@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.StackPane;
+import pos.pckg.misc.DataBridgeDirectory;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -19,12 +20,12 @@ public class POSAbout extends POSDashboard  implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            Scanner scan = new Scanner(new FileInputStream("etc\\initial.file"));
+            Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\initial.file"));
             bName = scan.nextLine();
             bAddress =scan.nextLine();
             bPhone = scan.nextLine();
             bEmail = scan.nextLine();
-            scan = new Scanner(new FileInputStream("etc\\cache-user.file"));
+            scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\cache-user.file"));
             cUser = scan.nextLine()+", "+scan.nextLine()+" "+scan.nextLine()+". "+scan.nextLine();
             copy = "Copyright (c) 2019-2020, All Rights Reserved.";
         } catch (FileNotFoundException e) {

@@ -17,6 +17,7 @@ import pos.Main;
 import pos.pckg.MiscInstances;
 import pos.pckg.data.CacheWriter;
 import pos.pckg.misc.BackgroundProcesses;
+import pos.pckg.misc.DataBridgeDirectory;
 import pos.pckg.misc.DirectoryHandler;
 import pos.pckg.misc.SceneManipulator;
 
@@ -94,11 +95,11 @@ public class POSDashboard implements Initializable , CacheWriter {
 
         BackgroundProcesses.realTimeClock(lblDate);
         BackgroundProcesses.changeSecondaryFormStageStatus((short)2);
-        writeToCache("etc\\loader\\load-sl-users.file");
+        writeToCache(DataBridgeDirectory.DOCUMENT+"etc\\loader\\load-sl-users.file");
 
         try {
             initReport();
-            Scanner scan = new Scanner(new FileInputStream("etc\\cache-user.file"));
+            Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\cache-user.file"));
             scan.nextLine();
             String fullName = scan.nextLine();
             fullName += (" "+scan.nextLine());
@@ -239,7 +240,7 @@ public class POSDashboard implements Initializable , CacheWriter {
             if (!Main.rfid.isSMSMode()) {
                 try {
                     Main.rfid.getSignalQuality();
-                    Scanner scan = new Scanner(new FileInputStream("etc/status/pckg.rfid-gsm-signal.file"));
+                    Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc/status/rfid-gsm-signal.file"));
                     if (scan.hasNextLine()){
                         String value[] = scan.nextLine().split("=");
                         if (value[0].equals("signalQuality")){
@@ -286,7 +287,7 @@ public class POSDashboard implements Initializable , CacheWriter {
             if (!Main.rfid.isSMSMode()) {
                 try {
                     Main.rfid.queryDevice();
-                    Scanner scan = new Scanner(new FileInputStream("etc/status/pckg.rfid-device-signal.file"));
+                    Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc/status/rfid-device-signal.file"));
                     if (scan.hasNextLine()){
                         String value[] = scan.nextLine().split("=");
                         if (value[0].equals("deviceConnected")){

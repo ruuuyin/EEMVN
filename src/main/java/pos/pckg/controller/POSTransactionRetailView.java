@@ -14,6 +14,7 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import pos.pckg.data.entity.RetailOrder;
+import pos.pckg.misc.DataBridgeDirectory;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -83,7 +84,7 @@ public class POSTransactionRetailView extends POSTransactionLogs implements Init
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            Scanner scan = new Scanner(new FileInputStream("etc\\cache-tl-view.file"));
+            Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\cache-tl-view.file"));
             lblTransactionNo.setText(scan.nextLine());
             tfType.setText(scan.nextLine());
             tfUser.setText(scan.nextLine());

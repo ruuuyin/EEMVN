@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import pos.pckg.MiscInstances;
 import pos.pckg.controller.message.POSMessage;
 import pos.pckg.misc.BackgroundProcesses;
+import pos.pckg.misc.DataBridgeDirectory;
 import pos.pckg.misc.DirectoryHandler;
 import pos.pckg.misc.InputRestrictor;
 
@@ -94,7 +95,7 @@ public class POSInitialSetup implements Initializable {
                         "Invalid Value",
                         POSMessage.MessageType.ERROR, btnOk);
         }else{
-            BufferedWriter writer = new BufferedWriter(new FileWriter("etc\\initial.file"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(DataBridgeDirectory.DOCUMENT+"etc\\initial.file"));
             String business = "";
             business += tfStoreName.getText() + "\n" +
                     tfStoreAddress.getText() + "\n" +
@@ -103,7 +104,7 @@ public class POSInitialSetup implements Initializable {
             writer.write(business);
             writer.close();
 
-            writer = new BufferedWriter(new FileWriter("etc\\cache-others.file"));
+            writer = new BufferedWriter(new FileWriter(DataBridgeDirectory.DOCUMENT+"etc\\cache-others.file"));
             String min = "500";
 
             writer.write(min);

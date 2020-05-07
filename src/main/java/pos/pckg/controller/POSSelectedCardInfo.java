@@ -14,6 +14,7 @@ import pos.Main;
 import pos.pckg.controller.message.POSMessage;
 import pos.pckg.data.AES;
 import pos.pckg.misc.BackgroundProcesses;
+import pos.pckg.misc.DataBridgeDirectory;
 import pos.pckg.misc.InputRestrictor;
 
 import java.io.FileInputStream;
@@ -72,7 +73,7 @@ public class POSSelectedCardInfo extends POSCustomerAccount {
         InputRestrictor.limitInput(pfNew,6);
         InputRestrictor.limitInput(pfOld,6);
         try {
-            Scanner scan = new Scanner(new FileInputStream(BackgroundProcesses.getFile("etc\\cache-card-info.file")));
+            Scanner scan = new Scanner(new FileInputStream(BackgroundProcesses.getFile(DataBridgeDirectory.DOCUMENT+"etc\\cache-card-info.file")));
             tfCardID.setText(scan.nextLine());
             tfBalance.setText(scan.nextLine());
             tfStatus.setText(scan.nextLine().equals("1")?"Active":"Inactive");
@@ -120,14 +121,14 @@ public class POSSelectedCardInfo extends POSCustomerAccount {
     private Scanner scan;
     private String forChallenge;
     private void scanOldPIN() throws FileNotFoundException {
-        scan = new Scanner(new FileInputStream("etc\\cache-card-info.file"));
+        scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\cache-card-info.file"));
         for (int i  = 1; i<=5;i++) System.out.println(scan.nextLine());
         forChallenge= AES.decrypt(scan.nextLine(), POSCustomerAccount.S_KEY);//TODO Under observation
         Main.rfid.PINChallenge(forChallenge);
 
         oldPINThread = new Timeline(new KeyFrame(Duration.ZERO, e -> {
             try {
-                scan = new Scanner(new FileInputStream("etc\\pckg.rfid-cache.file"));
+                scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\rfid-cache.file"));
                 while (scan.hasNextLine()){
                     String scanned[] = scan.nextLine().split("=");
                     if (scanned[0].equals("PINChallenge")){
@@ -156,7 +157,7 @@ public class POSSelectedCardInfo extends POSCustomerAccount {
         Main.rfid.PINCreate();
         newPINThread = new Timeline(new KeyFrame(Duration.ZERO, e -> {
             try {
-                Scanner scan = new Scanner(new FileInputStream("etc\\pckg.rfid-cache.file"));
+                Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\rfid-cache.file"));
                 while (scan.hasNextLine()){
                     String []scanned = scan.nextLine().split("=");
                     if (scanned[0].equals("PINCreate")){

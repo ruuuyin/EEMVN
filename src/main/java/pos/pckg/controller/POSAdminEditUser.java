@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import pos.pckg.controller.message.POSMessage;
+import pos.pckg.misc.DataBridgeDirectory;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -121,7 +122,7 @@ public class POSAdminEditUser extends POSAdminUser implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            Scanner scan = new Scanner(new FileInputStream("etc\\cache-admin-selected-user.file"));
+            Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\cache-admin-selected-user.file"));
             tfUid.setText(scan.nextLine());
             tfFirstName.setText(scan.nextLine());
             tfMiddleInitial.setText(scan.nextLine());

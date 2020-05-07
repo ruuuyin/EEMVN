@@ -8,6 +8,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import pos.pckg.controller.message.POSMessage;
+import pos.pckg.misc.DataBridgeDirectory;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -96,7 +97,7 @@ public class POSAdminPinRecovery extends POSAdminUser implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Scanner scan = null;
         try {
-            scan = new Scanner(new FileInputStream("etc\\cache-admin-selected-user.file"));
+            scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\cache-admin-selected-user.file"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

@@ -9,6 +9,7 @@ import javafx.scene.layout.StackPane;
 import pos.pckg.controller.message.POSMessage;
 import pos.pckg.data.entity.Item;
 import pos.pckg.misc.BackgroundProcesses;
+import pos.pckg.misc.DataBridgeDirectory;
 import pos.pckg.misc.InputRestrictor;
 
 import java.io.FileInputStream;
@@ -52,7 +53,7 @@ public class POSItemEdit extends POSInventory {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             /* To get the selected pckg.data from table, it is written to a text file 'cache-selected-item.file'*/
-            Scanner scan = new Scanner(new FileInputStream(BackgroundProcesses.getFile("etc\\cache-selected-item.file")));
+            Scanner scan = new Scanner(new FileInputStream(BackgroundProcesses.getFile(DataBridgeDirectory.DOCUMENT+"etc\\cache-selected-item.file")));
             itemId = Integer.parseInt(scan.nextLine()); // Line 1 of the cache = ItemID
             lblItemID.setText("Item ID : "+itemId);
             oldCode = scan.nextLine();                  // Line 2 of the cache = Item code
