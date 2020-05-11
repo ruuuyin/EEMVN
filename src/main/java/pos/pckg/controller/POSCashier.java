@@ -444,7 +444,6 @@ public class POSCashier implements Initializable {
             // Check to see if the device is in not in SMS mode
             // Any passed commands to the device while it is in the middle of an SMS operation will interfere with it,
             // potentially causing the device's GSM module to get stuck
-            if (!Main.rfid.isSMSMode()) {
                 try {
                     Main.rfid.getSignalQuality();
                     Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc/status/rfid-gsm-signal.file"));
@@ -478,7 +477,6 @@ public class POSCashier implements Initializable {
                     ivGsmSignal.setImage(new Image(url));
                     gsmSignalToolTip();
                 }
-            }
         }),
                 new KeyFrame(Duration.seconds(3))
         );
@@ -491,7 +489,6 @@ public class POSCashier implements Initializable {
             // Check to see if the device is in not in SMS mode
             // Any passed commands to the device while it is in the middle of an SMS operation will interfere with it,
             // potentially causing the device's GSM module to get stuck
-            if (!Main.rfid.isSMSMode()) {
                 try {
                     Main.rfid.queryDevice();
                     Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc/status/rfid-device-signal.file"));
@@ -517,7 +514,6 @@ public class POSCashier implements Initializable {
                     ivRfidSignal.setImage(new Image(url));
                 }
                 rfidToolTip();
-            }
         }),
                 new KeyFrame(Duration.seconds(5))
         );

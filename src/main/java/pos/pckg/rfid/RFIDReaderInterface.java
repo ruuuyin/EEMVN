@@ -32,7 +32,7 @@ public class RFIDReaderInterface {
     private String GSMSignalFilePath = DataBridgeDirectory.DOCUMENT+"etc\\status\\rfid-gsm-signal.file";
     private boolean interpretNextByte = false;
     private boolean deviceReady = false;
-    private boolean serialCommDebugging = false; // Set to true when checking pckg.data sent/received through serial
+    private boolean serialCommDebugging = true; // Set to true when checking pckg.data sent/received through serial
     private int lastCommand = 0;
     private long time;
     private int smsConfirmationNet = 0;

@@ -85,7 +85,7 @@ public class Main extends Application {
 
     // 2 parameters, one for each line. This doesn't have a character length limiter, so make sure to only pass Strings
     // that are 39 characters long (it can handle up to 40, but I wouldn't recommend using that max
-    public static RFIDReaderInterface rfid = new RFIDReaderInterface("Welcome to " + BackgroundProcesses.getStoreName(),"");
+    public static RFIDReaderInterface rfid = new RFIDReaderInterface("Welcome to " + ((BackgroundProcesses.getStoreName().equals(""))?"Empty":BackgroundProcesses.getStoreName()),"");
 
     private static void createLocalDataDirectory(){
         File file = new File(DataBridgeDirectory.DOCUMENT+"etc");
@@ -120,11 +120,10 @@ public class Main extends Application {
                 else if (i==6)
                     cacheWriter("gsmStatus=0",localData[i]);
                 else if(i==25){
-                    cacheWriter("jdbc:mysql://localhost:3306/ee-pos?useTimezone=true&serverTimezone=UTC\n" +
+                    cacheWriter("jdbc:mysql://localhost:3306/ee-db\n" +
                             "root\n" +
-                            "00000",localData[i]);
+                                "pass123",localData[i]);
                 }
-
 
             }
         }
