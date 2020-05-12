@@ -155,7 +155,7 @@ public class Customer extends RecursiveTreeObject<Customer> implements CacheWrit
                 "-fx-text-fill:#ffffff;");
 
         button.setOnAction(e->{
-            writeToCache(DataBridgeDirectory.DOCUMENT+"etc\\cache-selected-customer.file:"+DataBridgeDirectory.DOCUMENT+"etc\\cache-card-info.file");
+            writeToCache(DataBridgeDirectory.DOCUMENT+"etc\\cache-selected-customer.file@@@"+DataBridgeDirectory.DOCUMENT+"etc\\cache-card-info.file");
             manipulator.openDialog((StackPane) getRoot(button), "POSSelectedCardInfo");
         });
     }
@@ -192,7 +192,7 @@ public class Customer extends RecursiveTreeObject<Customer> implements CacheWrit
                 "-fx-text-fill:#ffffff;");
 
         btnEdit.setOnAction(e->{
-            writeToCache(DataBridgeDirectory.DOCUMENT+"etc\\cache-selected-customer.file:"+DataBridgeDirectory.DOCUMENT+"etc\\cache-card-info.file");
+            writeToCache(DataBridgeDirectory.DOCUMENT+"etc\\cache-selected-customer.file@@@"+DataBridgeDirectory.DOCUMENT+"etc\\cache-card-info.file");
             manipulator.openDialog((StackPane) this.getRoot(btnEdit),"POSCustomerEdit");
         });
 
@@ -263,7 +263,7 @@ public class Customer extends RecursiveTreeObject<Customer> implements CacheWrit
 
     @Override
     public void writeToCache(String files) {
-        String file[] = files.split(":");
+        String file[] = files.split("@@@");
 
         String cache = customerID +
                 "\n" + firstName +
