@@ -32,7 +32,7 @@
                   </Label>
                </children>
             </HBox>
-            <TextArea fx:id="taAbout" editable="false" layoutX="14.0" layoutY="122.0" prefHeight="297.0" prefWidth="454.0" text="Version  : 1.0.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
+            <TextArea fx:id="taAbout" editable="false" layoutX="14.0" layoutY="122.0" prefHeight="297.0" prefWidth="454.0" text="Version  : 1.2.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
                <font>
                   <Font size="14.0" />
                </font>

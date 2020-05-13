@@ -76,7 +76,7 @@
                   </HBox>
                   <VBox alignment="BOTTOM_CENTER" minHeight="-Infinity" prefHeight="129.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Label fx:id="lblSystemInfo" alignment="BOTTOM_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="18.0" prefWidth="1138.0" text="Point of Sale System v1.0.0">
+                        <Label fx:id="lblSystemInfo" alignment="BOTTOM_RIGHT" maxWidth="1.7976931348623157E308" prefHeight="18.0" prefWidth="1138.0" text="Point of Sale System v1.2.0">
                            <VBox.margin>
                               <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                            </VBox.margin>
