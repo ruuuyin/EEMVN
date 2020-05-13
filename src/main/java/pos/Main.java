@@ -120,7 +120,7 @@ public class Main extends Application {
                 else if (i==6)
                     cacheWriter("gsmStatus=0",localData[i]);
                 else if(i==25){
-                    cacheWriter("jdbc:mysql://localhost:3306/ee-db\n" +
+                    cacheWriter("jdbc:mysql://localhost:3306/ee-pos\n" +
                             "root\n" +
                                 "pass123",localData[i]);
                 }
