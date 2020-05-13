@@ -2,3 +2,8 @@
 etc/
 shade/
 target/
+/output/ee-pos.ico
+/output/EE-POS-MVN.jar
+/output/Version1.0.0-export.sql
+/jpackagessettings.bat
+/EE-POS-MVN.iml
