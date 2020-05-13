@@ -170,7 +170,22 @@ public class RFIDReaderInterface {
                                     for (int x = 0; x < byteStreamBuffer.size(); x++) {
                                         byteStreamArray[x] = byteStreamBuffer.get(x);
                                     }
-                                    interpretReceivedData(byteStreamArray);
+
+                                    if (byteStreamArray[0] == 142) {
+                                        // Writes the device status
+                                        writeToCache("deviceConnected=" + (char)byteStreamArray[1], DeviceSignalFilePath);
+                                    }
+                                    else if (byteStreamArray[0] == 135) {
+                                        String signalQuality = "";
+                                        for (int x = 1; x > byteStreamArray.length; x++)
+                                            signalQuality += (char)byteStreamArray[x];
+                                        // Writes the signal quality of the GSM module
+                                        writeToCache("signalQuality=" + signalQuality, GSMSignalFilePath);
+
+                                    }
+                                    else {
+                                        interpretReceivedData(byteStreamArray);
+                                    }
                                 }
                             }
                             else { // For any other byte, store it to the byteStream buffer
@@ -255,7 +270,7 @@ public class RFIDReaderInterface {
      */
     public void queryDevice() {
         sendByteToDevice(142);
-        interpretNextByte = true; // Will write the reply to cache
+        interpretNextByteStream = true; // Will write the reply to cache
         // Keep track of the last command that was called to help with determining what to write to the cache file
         lastCommand = 142;
     }
@@ -301,11 +316,6 @@ public class RFIDReaderInterface {
                 writeToCache("GSMStatus=" + (char)bytesRead[0], RFIDCacheFilePath);
                 break;
 
-            case 135: // Get signal quality
-                // Writes the signal quality of the GSM module
-                writeToCache("signalQuality=" + byteStreamBufferToString(), GSMSignalFilePath);
-                break;
-
             case 139: // PIN Challenge
                 // Writes either 0 or 1, indicating the result of the PIN challenge
                 writeToCache("PINChallenge=" + (char)bytesRead[0], RFIDCacheFilePath);
@@ -314,10 +324,6 @@ public class RFIDReaderInterface {
             case 141: // PIN Create
                 // Writes the newly-created 6-digit PIN by the user
                 writeToCache("PINCreate=" + byteStreamBufferToString(), RFIDCacheFilePath);
-                break;
-
-            case 142: // Device connection query
-                writeToCache("deviceConnected=" + (char)bytesRead[0], DeviceSignalFilePath);
                 break;
 
             case 151: // Get SIM status
