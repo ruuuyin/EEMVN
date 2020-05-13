@@ -32,7 +32,7 @@ public class RFIDReaderInterface {
     private String GSMSignalFilePath = DataBridgeDirectory.DOCUMENT+"etc\\status\\rfid-gsm-signal.file";
     private boolean interpretNextByte = false;
     private boolean deviceReady = false;
-    private boolean serialCommDebugging = false; // Set to true when checking pckg.data sent/received through serial
+    private boolean serialCommDebugging = true; // Set to true when checking pckg.data sent/received through serial
     private int lastCommand = 0;
     private long time;
     private int smsConfirmationNet = 0;
@@ -170,22 +170,7 @@ public class RFIDReaderInterface {
                                     for (int x = 0; x < byteStreamBuffer.size(); x++) {
                                         byteStreamArray[x] = byteStreamBuffer.get(x);
                                     }
-
-                                    if (byteStreamArray[0] == 142) {
-                                        // Writes the device status
-                                        writeToCache("deviceConnected=" + (char)byteStreamArray[1], DeviceSignalFilePath);
-                                    }
-                                    else if (byteStreamArray[0] == 135) {
-                                        String signalQuality = "";
-                                        for (int x = 1; x > byteStreamArray.length; x++)
-                                            signalQuality += (char)byteStreamArray[x];
-                                        // Writes the signal quality of the GSM module
-                                        writeToCache("signalQuality=" + signalQuality, GSMSignalFilePath);
-
-                                    }
-                                    else {
-                                        interpretReceivedData(byteStreamArray);
-                                    }
+                                    interpretReceivedData(byteStreamArray);
                                 }
                             }
                             else { // For any other byte, store it to the byteStream buffer
@@ -326,6 +311,10 @@ public class RFIDReaderInterface {
                 writeToCache("PINCreate=" + byteStreamBufferToString(), RFIDCacheFilePath);
                 break;
 
+            case 135: // Get signal quality
+                writeToCache("signalQuality=" + data[1], GSMSignalFilePath);
+                writeToCache("deviceConnected=1", DeviceSignalFilePath);
+                break;
             case 151: // Get SIM status
                 // Writes either 0 or 1, indicating the status of an inserted SIM card in the GSM module
                 writeToCache("SIMStatus=" + (char)bytesRead[0], RFIDCacheFilePath);
@@ -437,6 +426,7 @@ public class RFIDReaderInterface {
      * Gets the current siqnal quality of the cellular connection
      */
     public void getSignalQuality() {
+        // Writes the signal quality of the GSM module
         sendByteToDevice(135);
         interpretNextByteStream = true; // Will write the reply to cache
         // Keep track of the last command that was called to help with determining what to write to the cache file
@@ -470,7 +460,8 @@ public class RFIDReaderInterface {
      */
     public void clearCache(){
         writeToCache("", RFIDCacheFilePath);
-    }
+    }//eto wala to kinalaman sa status
+                                                                    //bale magkahiwalay na file yung sa status tapos sa pagamit nugn scanner
 
     /**
      * Clears the device signal and GSM signal cache files

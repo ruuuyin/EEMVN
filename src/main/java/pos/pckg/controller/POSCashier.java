@@ -448,7 +448,7 @@ public class POSCashier implements Initializable {
             // potentially causing the device's GSM module to get stuck
                 try {
                     Main.rfid.getSignalQuality();
-                    Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc/status/rfid-gsm-signal.file"));
+                    Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc\\status\\rfid-gsm-signal.file"));
                     if (scan.hasNextLine()){
                         String value[] = scan.nextLine().split("=");
                         System.out.println("Source:Main.rfid.getSignalQuality();\n\t["+value[0]+"="+value[1]+"]");//TODO to check the returned status
@@ -470,6 +470,11 @@ public class POSCashier implements Initializable {
                             ivGsmSignal.setImage(new Image(url));
                             gsmSignalToolTip();
                         }
+                    }else{
+                        String url = DirectoryHandler.IMG+ "pos-connection-dc.png";
+
+                        ivGsmSignal.setImage(new Image(url));
+                        gsmSignalToolTip();
                     }
 
                 } catch (Exception ex) {
@@ -481,19 +486,19 @@ public class POSCashier implements Initializable {
                     gsmSignalToolTip();
                 }
         }),
-                new KeyFrame(Duration.seconds(2))
+                new KeyFrame(Duration.seconds(3))
         );
         gsmSignalThread.setCycleCount(Animation.INDEFINITE);
         gsmSignalThread.play();
     }
-
+    private int counter=0;
     private void checkRFIDStatus(){
         rfidStatus = new Timeline(new KeyFrame(Duration.ZERO, e -> {
             // Check to see if the device is in not in SMS mode
             // Any passed commands to the device while it is in the middle of an SMS operation will interfere with it,
             // potentially causing the device's GSM module to get stuck
                 try {
-                    Main.rfid.queryDevice();
+                    //Main.rfid.queryDevice();
                     Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc/status/rfid-device-signal.file"));
                     if (scan.hasNextLine()){
                         String value[] = scan.nextLine().split("=");
@@ -509,6 +514,13 @@ public class POSCashier implements Initializable {
                             ivRfidSignal.setImage(new Image(url));
                             Main.rfid.clearStatusCache();
                         }
+                    }else{
+                        if (counter==2){
+                            String url = DirectoryHandler.IMG+"pos-rfid-signal-dc.png";
+                            ivRfidSignal.setImage(new Image(url));
+                            counter = 0;
+                        }
+                        counter++;
                     }
                 } catch (Exception ex) {
                     //ex.printStackTrace();
@@ -518,7 +530,7 @@ public class POSCashier implements Initializable {
                 }
                 rfidToolTip();
         }),
-                new KeyFrame(Duration.seconds(3))
+                new KeyFrame(Duration.seconds(5))
         );
         rfidStatus.setCycleCount(Animation.INDEFINITE);
         rfidStatus.play();
