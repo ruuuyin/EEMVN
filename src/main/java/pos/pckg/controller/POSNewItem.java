@@ -78,7 +78,7 @@ public class POSNewItem extends POSInventory {
             POSMessage.showMessage(rootPane, "Item Code Already Exist", "Item Code Error", POSMessage.MessageType.ERROR);
         }else if (hasEmptyField()){
             POSMessage.showMessage(rootPane,"Please fill all the Fields","Invalid Value", POSMessage.MessageType.ERROR);
-        }else if (tfItemCode.getText().length()<12){
+        }else if (tfItemCode.getText().length()<8){
             POSMessage.showMessage(rootPane, "You've entered an Invalid Code", "Invalid Code", POSMessage.MessageType.ERROR);
         }else {
             String sql = "Insert into item(itemCode,itemName,itemPrice,stock)" +

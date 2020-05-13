@@ -32,7 +32,7 @@ public class RFIDReaderInterface {
     private String GSMSignalFilePath = DataBridgeDirectory.DOCUMENT+"etc\\status\\rfid-gsm-signal.file";
     private boolean interpretNextByte = false;
     private boolean deviceReady = false;
-    private boolean serialCommDebugging = true; // Set to true when checking pckg.data sent/received through serial
+    private boolean serialCommDebugging = false; // Set to true when checking pckg.data sent/received through serial
     private int lastCommand = 0;
     private long time;
     private int smsConfirmationNet = 0;
@@ -303,7 +303,7 @@ public class RFIDReaderInterface {
 
             case 135: // Get signal quality
                 // Writes the signal quality of the GSM module
-                writeToCache("signalQuality=" + byteStreamBufferToString(), RFIDCacheFilePath);
+                writeToCache("signalQuality=" + byteStreamBufferToString(), GSMSignalFilePath);
                 break;
 
             case 139: // PIN Challenge
@@ -317,7 +317,7 @@ public class RFIDReaderInterface {
                 break;
 
             case 142: // Device connection query
-                writeToCache("deviceConnected=" + (char)bytesRead[0], RFIDCacheFilePath);
+                writeToCache("deviceConnected=" + (char)bytesRead[0], DeviceSignalFilePath);
                 break;
 
             case 151: // Get SIM status

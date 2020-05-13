@@ -194,6 +194,8 @@ public class POSCashier implements Initializable {
 
     @FXML
     protected void btnHomeOnAction(ActionEvent event) {
+        gsmSignalThread.stop();
+        rfidStatus.stop();
         sceneManipulator.changeScene(rootPane,"POSDashboard", " | Dashboard");
     }
 
@@ -449,6 +451,7 @@ public class POSCashier implements Initializable {
                     Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc/status/rfid-gsm-signal.file"));
                     if (scan.hasNextLine()){
                         String value[] = scan.nextLine().split("=");
+                        System.out.println("Source:Main.rfid.getSignalQuality();\n\t["+value[0]+"="+value[1]+"]");//TODO to check the returned status
                         if (value[0].equals("signalQuality")){
                             int val = Integer.parseInt(value[1]);
                             String url = "";
@@ -496,11 +499,11 @@ public class POSCashier implements Initializable {
                         String value[] = scan.nextLine().split("=");
                         if (value[0].equals("deviceConnected")){
                             int val = Integer.parseInt(value[1]);
-                            System.out.println("///////////////////////////////////////////////////\n\n"+val);
+                            System.out.println("Source:Main.rfid.queryDevice();\n\t[deviceConnected="+val+"]");//TODO to check the returned status
                             String url = "";
                             if (val==0)
                                 url = DirectoryHandler.IMG+"pos-rfid-signal-dc.png";
-                            else if (val==1)
+                            else if (val>0)//TODO Observe the status of rfid device. two status return added
                                 url = DirectoryHandler.IMG+"pos-rfid-signal.png";
 
                             ivRfidSignal.setImage(new Image(url));

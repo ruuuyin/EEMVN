@@ -237,39 +237,40 @@ public class POSDashboard implements Initializable , CacheWriter {
             // Check to see if the device is in not in SMS mode
             // Any passed commands to the device while it is in the middle of an SMS operation will interfere with it,
             // potentially causing the device's GSM module to get stuck
-                try {
-                    Main.rfid.getSignalQuality();
-                    Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc/status/rfid-gsm-signal.file"));
-                    if (scan.hasNextLine()){
-                        String value[] = scan.nextLine().split("=");
-                        if (value[0].equals("signalQuality")){
-                            int val = Integer.parseInt(value[1]);
-                            String url = "";
-                            if (val>=1 && val<=10)
-                                url = DirectoryHandler.IMG+ "pos-connection-low.png";
-                            else if (val>=11 && val<=20)
-                                url = DirectoryHandler.IMG+ "pos-connection-medium.png";
-                            else if (val>=21 && val<=30)
-                                url = DirectoryHandler.IMG+ "pos-connection-high.png";
-                            ivGsmSignal.setImage(new Image(url));
-                            gsmSignalToolTip();
-                            Main.rfid.clearStatusCache();
-                        }else{
-                            String url = DirectoryHandler.IMG+ "pos-connection-dc.png";
+            try {
+                Main.rfid.getSignalQuality();
+                Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc/status/rfid-gsm-signal.file"));
+                if (scan.hasNextLine()){
+                    String value[] = scan.nextLine().split("=");
+                    System.out.println("Source:Main.rfid.getSignalQuality();\n\t["+value[0]+"="+value[1]+"]");//TODO to check the returned status
+                    if (value[0].equals("signalQuality")){
+                        int val = Integer.parseInt(value[1]);
+                        String url = "";
+                        if (val>=1 && val<=10)
+                            url = DirectoryHandler.IMG+ "pos-connection-low.png";
+                        else if (val>=11 && val<=20)
+                            url = DirectoryHandler.IMG+ "pos-connection-medium.png";
+                        else if (val>=21 && val<=30)
+                            url = DirectoryHandler.IMG+ "pos-connection-high.png";
+                        ivGsmSignal.setImage(new Image(url));
+                        gsmSignalToolTip();
+                        Main.rfid.clearStatusCache();
+                    }else{
+                        String url = DirectoryHandler.IMG+ "pos-connection-dc.png";
 
-                            ivGsmSignal.setImage(new Image(url));
-                            gsmSignalToolTip();
-                        }
+                        ivGsmSignal.setImage(new Image(url));
+                        gsmSignalToolTip();
                     }
-
-                } catch (Exception ex) {
-                    //TODO Stacktrace : status : OFF
-                    //ex.printStackTrace();
-                    String url = DirectoryHandler.IMG+ "pos-connection-dc.png";
-
-                    ivGsmSignal.setImage(new Image(url));
-                    gsmSignalToolTip();
                 }
+
+            } catch (Exception ex) {
+                //TODO Stacktrace : status : OFF
+                //ex.printStackTrace();
+                String url = DirectoryHandler.IMG+ "pos-connection-dc.png";
+
+                ivGsmSignal.setImage(new Image(url));
+                gsmSignalToolTip();
+            }
         }),
                 new KeyFrame(Duration.seconds(3))
         );
@@ -282,33 +283,33 @@ public class POSDashboard implements Initializable , CacheWriter {
             // Check to see if the device is in not in SMS mode
             // Any passed commands to the device while it is in the middle of an SMS operation will interfere with it,
             // potentially causing the device's GSM module to get stuck
-                try {
-                    Main.rfid.queryDevice();
-                    Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc/status/rfid-device-signal.file"));
-                    if (scan.hasNextLine()){
-                        String value[] = scan.nextLine().split("=");
-                        if (value[0].equals("deviceConnected")){
-                            int val = Integer.parseInt(value[1]);
-                            System.out.println("///////////////////////////////////////////////////\n\n"+val);
-                            String url = "";
-                            if (val==0)
-                                url = DirectoryHandler.IMG+"pos-rfid-signal-dc.png";
-                            else if (val==1)
-                                url = DirectoryHandler.IMG+"pos-rfid-signal.png";
+            try {
+                Main.rfid.queryDevice();
+                Scanner scan = new Scanner(new FileInputStream(DataBridgeDirectory.DOCUMENT+"etc/status/rfid-device-signal.file"));
+                if (scan.hasNextLine()){
+                    String value[] = scan.nextLine().split("=");
+                    if (value[0].equals("deviceConnected")){
+                        int val = Integer.parseInt(value[1]);
+                        System.out.println("Source:Main.rfid.queryDevice();\n\t[deviceConnected="+val+"]");//TODO to check the returned status
+                        String url = "";
+                        if (val==0)
+                            url = DirectoryHandler.IMG+"pos-rfid-signal-dc.png";
+                        else if (val>0)//TODO Observe the status of rfid device. two status return added
+                            url = DirectoryHandler.IMG+"pos-rfid-signal.png";
 
-                            ivRfidSignal.setImage(new Image(url));
-                            Main.rfid.clearStatusCache();
-                        }
+                        ivRfidSignal.setImage(new Image(url));
+                        Main.rfid.clearStatusCache();
                     }
-                } catch (Exception ex) {
-                    //ex.printStackTrace();
-                    String url = DirectoryHandler.IMG+"pos-rfid-signal-dc.png";
-
-                    ivRfidSignal.setImage(new Image(url));
                 }
-                rfidToolTip();
+            } catch (Exception ex) {
+                //ex.printStackTrace();
+                String url = DirectoryHandler.IMG+"pos-rfid-signal-dc.png";
+
+                ivRfidSignal.setImage(new Image(url));
+            }
+            rfidToolTip();
         }),
-                new KeyFrame(Duration.seconds(1))
+                new KeyFrame(Duration.seconds(5))
         );
         rfidStatus.setCycleCount(Animation.INDEFINITE);
         rfidStatus.play();
