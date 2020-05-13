@@ -481,7 +481,7 @@ public class POSCashier implements Initializable {
                     gsmSignalToolTip();
                 }
         }),
-                new KeyFrame(Duration.seconds(3))
+                new KeyFrame(Duration.seconds(2))
         );
         gsmSignalThread.setCycleCount(Animation.INDEFINITE);
         gsmSignalThread.play();
@@ -518,7 +518,7 @@ public class POSCashier implements Initializable {
                 }
                 rfidToolTip();
         }),
-                new KeyFrame(Duration.seconds(5))
+                new KeyFrame(Duration.seconds(3))
         );
         rfidStatus.setCycleCount(Animation.INDEFINITE);
         rfidStatus.play();

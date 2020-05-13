@@ -174,8 +174,11 @@ public class POSDashboard implements Initializable , CacheWriter {
 
     @FXML
     void btnSignOutOnAction(ActionEvent event) {
-        if(event.getSource().equals(btnSignOut))
+        if(event.getSource().equals(btnSignOut)){
+            gsmSignalThread.stop();
+            rfidStatus.stop();
             manipulator.changeScene(rootPane,"POSLogin"," | Login");
+        }
         else if (event.getSource().equals(btnChangePin))
             misc.sceneManipulator.openDialog(rootPane,"POSPasswordManagement");
     }
@@ -272,7 +275,7 @@ public class POSDashboard implements Initializable , CacheWriter {
                 gsmSignalToolTip();
             }
         }),
-                new KeyFrame(Duration.seconds(3))
+                new KeyFrame(Duration.seconds(2))
         );
         gsmSignalThread.setCycleCount(Animation.INDEFINITE);
         gsmSignalThread.play();
@@ -309,7 +312,7 @@ public class POSDashboard implements Initializable , CacheWriter {
             }
             rfidToolTip();
         }),
-                new KeyFrame(Duration.seconds(5))
+                new KeyFrame(Duration.seconds(3))
         );
         rfidStatus.setCycleCount(Animation.INDEFINITE);
         rfidStatus.play();
