@@ -460,15 +460,17 @@ public class RFIDReaderInterface {
      */
     public void clearCache(){
         writeToCache("", RFIDCacheFilePath);
-    }//eto wala to kinalaman sa status
-                                                                    //bale magkahiwalay na file yung sa status tapos sa pagamit nugn scanner
+    }
 
     /**
      * Clears the device signal and GSM signal cache files
      */
     public void clearStatusCache(){
-        writeToCache("",DeviceSignalFilePath);
+
         writeToCache("",GSMSignalFilePath);
+    }
+    public void clearRFIDStatusCache(){
+        writeToCache("",DeviceSignalFilePath);
     }
 
     /**
