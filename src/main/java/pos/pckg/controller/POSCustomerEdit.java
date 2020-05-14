@@ -13,6 +13,7 @@ import pos.pckg.misc.BackgroundProcesses;
 import pos.pckg.misc.DataBridgeDirectory;
 import pos.pckg.misc.InputRestrictor;
 
+import javax.swing.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
@@ -85,8 +86,10 @@ public class POSCustomerEdit extends POSCustomerAccount {
 
             tfAddress.setText(scan.nextLine());
             tfMobileNumber.setText(scan.nextLine());
-            tfEmailAddress.setText(scan.nextLine());
+            String email = scan.nextLine();
+            tfEmailAddress.setText(email.equals("N/A")?"":email);
         } catch (FileNotFoundException e) {
+            JOptionPane.showMessageDialog(null,"Cannot find cache directory",e.getMessage(),JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
     }
@@ -102,7 +105,7 @@ public class POSCustomerEdit extends POSCustomerAccount {
             sceneManipulator.closeDialog();
         }else if (hasEmptyField()){
             POSMessage.showMessage(rootPane,"Please fill all the required fields","Invalid Value", POSMessage.MessageType.ERROR);
-        }else if (!emailIsValid()){
+        }else if (!tfEmailAddress.getText().equals("")&&!emailIsValid()){
             POSMessage.showMessage(rootPane,"The email you've entered is invalid","Invalid Value", POSMessage.MessageType.ERROR);
         }else if (!mobileIsValid()){
             POSMessage.showMessage(rootPane,"The mobile number you've entered is invalid","Invalid Value", POSMessage.MessageType.ERROR);
@@ -122,7 +125,7 @@ public class POSCustomerEdit extends POSCustomerAccount {
                         "sex = '"+(rbMale.isSelected()?"Male":"Female")+"',"+
                         "address = '"+tfAddress.getText()+"',"+
                         "phonenumber = '"+tfMobileNumber.getText()+"',"+
-                        "emailAddress = '"+tfEmailAddress.getText()+"'"+
+                        "emailAddress = '"+(tfEmailAddress.getText().equals("")?"N/A":tfEmailAddress.getText())+"'"+
                         "Where customerID = "+this.customerID;
                 misc.dbHandler.startConnection();
                 misc.dbHandler.execUpdate(sql);
