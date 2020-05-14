@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class POSAbout extends POSDashboard  implements Initializable {
-    private String productV="1.2.0",bName,bAddress,bEmail,bPhone,cUser,copy;
+    private String productV="1.2.1",bName,bAddress,bEmail,bPhone,cUser,copy;
     private String value;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
