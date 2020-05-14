@@ -312,7 +312,8 @@ public class RFIDReaderInterface {
                 break;
 
             case 135: // Get signal quality
-                writeToCache("signalQuality=" + data[1], GSMSignalFilePath);
+                byteStreamBuffer.remove(0);
+                writeToCache("signalQuality=" + byteStreamBufferToString(), GSMSignalFilePath);
                 writeToCache("deviceConnected=1", DeviceSignalFilePath);
                 break;
             case 151: // Get SIM status
