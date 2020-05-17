@@ -207,11 +207,11 @@ public class RFIDReaderInterface {
 
                     // Waits for queries from the device during SMS sending mode
                     if (SMSMode) {
-                        if (bytesRead[0] == 17) { // If the recipient's number is being requested
+                        if (bytesRead[0] == 19) { // If the recipient's number is being requested
                             sendStringToDevice(SMSRecipientNumber);
                             sendByteToDevice(3);
                         }
-                        else if (bytesRead[0] == 18) { // If the message content is being requested
+                        else if (bytesRead[0] == 20) { // If the message content is being requested
                             sendStringToDevice(SMSContent);
                             sendByteToDevice(3);
                         }
@@ -362,10 +362,14 @@ public class RFIDReaderInterface {
      * @param message is the message to be sent to the recipient
      */
     public void sendSMS(String recipientNumber, String message) {
-        sendByteToDevice(136); // Sets the device to SMS mode
-        SMSMode = true;
-        SMSRecipientNumber = recipientNumber;
-        SMSContent = message;
+        if (message.length() <= 160) {
+            sendByteToDevice(136); // Sets the device to SMS mode
+            SMSMode = true;
+            SMSRecipientNumber = recipientNumber;
+            SMSContent = message;
+        }
+        else
+            System.out.println("ERROR: Could not send SMS - Character limit exceeded (160 chars)");
     }
 
     /**
@@ -483,7 +487,7 @@ public class RFIDReaderInterface {
     private boolean attemptOpeningPort(SerialPort targetPort, int baudRate) {
         // Set the comp port's parameters in the following order:
         // Baud Rate, New Data Bits, New Stop Bits, New Parity
-        targetPort.setComPortParameters(baudRate, 8, 1, 0);
+        targetPort.setComPortParameters(baudRate, 8, 1, 2);
         // Set the timeout behavior
         targetPort.setComPortTimeouts(SerialPort.TIMEOUT_READ_SEMI_BLOCKING, 0, 0);
 
