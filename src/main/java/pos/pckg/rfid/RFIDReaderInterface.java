@@ -207,11 +207,11 @@ public class RFIDReaderInterface {
 
                     // Waits for queries from the device during SMS sending mode
                     if (SMSMode) {
-                        if (bytesRead[0] == 17) { // If the recipient's number is being requested
+                        if (bytesRead[0] == 19) { // If the recipient's number is being requested
                             sendStringToDevice(SMSRecipientNumber);
                             sendByteToDevice(3);
                         }
-                        else if (bytesRead[0] == 18) { // If the message content is being requested
+                        else if (bytesRead[0] == 20) { // If the message content is being requested
                             sendStringToDevice(SMSContent);
                             sendByteToDevice(3);
                         }
@@ -254,10 +254,10 @@ public class RFIDReaderInterface {
      * Checks if the device is still connected
      */
     public void queryDevice() {
-        sendByteToDevice(142);
+        sendByteToDevice(21);
         interpretNextByteStream = true; // Will write the reply to cache
         // Keep track of the last command that was called to help with determining what to write to the cache file
-        lastCommand = 142;
+        lastCommand = 21;
     }
 
     /**
@@ -291,32 +291,33 @@ public class RFIDReaderInterface {
      */
     private void interpretReceivedData(byte data[]) {
         switch (lastCommand) {
-            case 132: // Scan
+            case 7: // Scan
                 // Writes the UID of the scanned RFID tag
                 writeToCache("scan=" + byteStreamBufferToString(), RFIDCacheFilePath);
                 break;
 
-            case 134: // Get GSM status
+            case 8: // Get GSM status
                 // Writes either 0 or 1, indicating the availability of the GSM module
                 writeToCache("GSMStatus=" + (char)bytesRead[0], RFIDCacheFilePath);
                 break;
 
-            case 139: // PIN Challenge
-                // Writes either 0 or 1, indicating the result of the PIN challenge
-                writeToCache("PINChallenge=" + (char)bytesRead[0], RFIDCacheFilePath);
-                break;
-
-            case 141: // PIN Create
-                // Writes the newly-created 6-digit PIN by the user
-                writeToCache("PINCreate=" + byteStreamBufferToString(), RFIDCacheFilePath);
-                break;
-
-            case 135: // Get signal quality
+            case 9: // Get signal quality
                 byteStreamBuffer.remove(0);
                 writeToCache("signalQuality=" + byteStreamBufferToString(), GSMSignalFilePath);
                 writeToCache("deviceConnected=1", DeviceSignalFilePath);
                 break;
-            case 151: // Get SIM status
+
+            case 15: // PIN Challenge
+                // Writes either 0 or 1, indicating the result of the PIN challenge
+                writeToCache("PINChallenge=" + (char)bytesRead[0], RFIDCacheFilePath);
+                break;
+
+            case 16: // PIN Create
+                // Writes the newly-created 6-digit PIN by the user
+                writeToCache("PINCreate=" + byteStreamBufferToString(), RFIDCacheFilePath);
+                break;
+
+            case 22: // Get SIM status
                 // Writes either 0 or 1, indicating the status of an inserted SIM card in the GSM module
                 writeToCache("SIMStatus=" + (char)bytesRead[0], RFIDCacheFilePath);
                 break;
@@ -353,7 +354,7 @@ public class RFIDReaderInterface {
      * Cancels the current operation being performed on the device
      */
     public void cancelOperation() {
-        sendByteToDevice(131);
+        sendByteToDevice(6);
     }
 
     /**
@@ -362,21 +363,25 @@ public class RFIDReaderInterface {
      * @param message is the message to be sent to the recipient
      */
     public void sendSMS(String recipientNumber, String message) {
-        sendByteToDevice(136); // Sets the device to SMS mode
-        SMSMode = true;
-        SMSRecipientNumber = recipientNumber;
-        SMSContent = message;
+        if (message.length() <= 160) {
+            sendByteToDevice(11); // Sets the device to SMS mode
+            SMSMode = true;
+            SMSRecipientNumber = recipientNumber;
+            SMSContent = message;
+        }
+        else
+            System.out.println("ERROR: Could not send SMS - Character limit exceeded (160 chars)");
     }
 
     /**
      * Prompts the user to scan an RFID card and writes the pckg.data to the cache when it is received
      */
     public void scan() {
-        sendByteToDevice(132); // Sends the command to the device
+        sendByteToDevice(7); // Sends the command to the device
         interpretNextByteStream = true; // Will write the reply to cache
 
         // Keep track of the last command that was called to help with determining what to write to the cache file
-        lastCommand = 132;
+        lastCommand = 7;
     }
 
     /**
@@ -384,43 +389,33 @@ public class RFIDReaderInterface {
      * @param PIN is the PIN that needs to be matched by the device's user
      */
     public void PINChallenge(String PIN) {
-        sendByteToDevice(139);
+        sendByteToDevice(15);
         sendStringToDevice(PIN);
         sendByteToDevice(3);
 
         interpretNextByte = true; // Will write the reply to cache
         // Keep track of the last command that was called to help with determining what to write to the cache file
-        lastCommand = 139;
+        lastCommand = 15;
     }
 
     /**
      * Prompts the device's user to enter a PIN twice
      */
     public void PINCreate() {
-        sendByteToDevice(141);
+        sendByteToDevice(16);
         interpretNextByteStream = true; // Will write the reply to cache
         // Keep track of the last command that was called to help with determining what to write to the cache file
-        lastCommand = 141;
+        lastCommand = 16;
     }
 
     /**
      * Queries the device of the GSM Module's status and writes to the cache file
      */
     public void getGSMStatus() {
-        sendByteToDevice(134);
+        sendByteToDevice(8);
         interpretNextByte = true; // Will write the reply to cache
         // Keep track of the last command that was called to help with determining what to write to the cache file
-        lastCommand = 134;
-    }
-
-    /**
-     * Queries the device of the SIM card's status and writes to the cache file
-     */
-    public void getSIMStatus() {
-        sendByteToDevice(151);
-        interpretNextByte = true; // Will write the reply to cache
-        // Keep track of the last command that was called to help with determining what to write to the cache file
-        lastCommand = 151;
+        lastCommand = 8;
     }
 
     /**
@@ -428,17 +423,17 @@ public class RFIDReaderInterface {
      */
     public void getSignalQuality() {
         // Writes the signal quality of the GSM module
-        sendByteToDevice(135);
+        sendByteToDevice(9);
         interpretNextByteStream = true; // Will write the reply to cache
         // Keep track of the last command that was called to help with determining what to write to the cache file
-        lastCommand = 135;
+        lastCommand = 9;
     }
 
     /**
      * Toggles the GSM module on or off
      */
     public void toggleGSMPower() {
-        sendByteToDevice(137);
+        sendByteToDevice(12);
     }
 
     /**
