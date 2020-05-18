@@ -31,9 +31,8 @@ public class RFIDMain {
                 System.out.println("3 - New Passcode");
                 System.out.println("4 - GSM Status");
                 System.out.println("5 - Toggle GSM Power");
-                System.out.println("6 - SIM Status");
-                System.out.println("7 - Get Signal Quality");
-                System.out.println("8 - Send SMS");
+                System.out.println("6 - Get Signal Quality");
+                System.out.println("7 - Send SMS");
                 System.out.println("99 - Cancel");
 
                 System.out.println("\n100 - Exit");
@@ -62,14 +61,10 @@ public class RFIDMain {
                 menuState = 0;
             }
             else if (menuState == 6) {
-                device.getSIMStatus();
-                menuState = 0;
-            }
-            else if (menuState == 7) {
                 device.getSignalQuality();
                 menuState = 0;
             }
-            else if (menuState == 8) {
+            else if (menuState == 7) {
                 System.out.print("Recipient : +");
                 String recipient = sc.nextLine();
                 System.out.print("Message (enter <END> to mark the end of the message) : ");
