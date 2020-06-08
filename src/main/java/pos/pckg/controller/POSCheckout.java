@@ -111,12 +111,13 @@ public class POSCheckout extends POSCashier {
             insertAllOrders(orderID);
             insertTransaction(orderID);
             updateCardBalance();
-            String message = "Transaction : "+transactionNumber+"\n"
-                    +"Cost : "+String.valueOf(transactionCost)+"\n"
-                    //+"Date : "+this.date+"\n"
-                    //+"Time : "+this.time+"\n"
-                    +"Balance : "+remainingBalance;
-
+            String message = date+" "+time+"\n" +
+                    "AWESOME!\n" +
+                    "You successfully purchased a worth of Php "+transactionCost+" " +
+                    "from "+BackgroundProcesses.getStoreName()+".\n" +
+                    "Available Balance: Php "+remainingBalance+"\n" +
+                    "Transaction no. "+transactionNumber+"\n" +
+                    "Card ID "+cardID;
             String intPhone = "63".concat(phone.substring(1,phone.length())).toString();
             try {
 
