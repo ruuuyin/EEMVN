@@ -61,7 +61,7 @@ public class POSLogin implements Initializable, CacheWriter {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        lblSystemInfo.setText(BackgroundProcesses.getStoreName()+" | Point of Sale System | Version 1.2.3");
+        lblSystemInfo.setText(BackgroundProcesses.getStoreName()+" | Point of Sale System | Version 1.3.0");
         lblStoreName.setText(BackgroundProcesses.getStoreName());
         BackgroundProcesses.changeSecondaryFormStageStatus((short) 2);
         InputRestrictor.numbersInput(tfEmpID);
