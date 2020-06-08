@@ -78,15 +78,18 @@ public class POSCustomerAccountForm extends POSCustomerAccount {
         }else if (!mobileIsValid()){
             POSMessage.showMessage(rootPane,"The mobile number you've entered is invalid","Invalid Value", POSMessage.MessageType.ERROR);
         }else{
+            String gender = "N/A";
+            if (rbFemale.isSelected()) gender = "Female";
+            if (rbMale.isSelected()) gender = "Male";
             String newAcc = "";
             BufferedWriter writer = new BufferedWriter(new FileWriter(BackgroundProcesses.getFile(DataBridgeDirectory.DOCUMENT+"etc\\cache-new-account.file")));
-            newAcc += tfFirstName.getText();
+            newAcc += (tfFirstName.getText().equals("")?"N/A":tfFirstName.getText());
             newAcc += "\n"+(tfMiddleInitial.getText().equals("")?"N/A":tfMiddleInitial.getText());
-            newAcc += "\n"+tfLastName.getText();
-            newAcc += "\n" + tfAddress.getText();
+            newAcc += "\n"+(tfLastName.getText().equals("")?"N/A":tfLastName.getText());
+            newAcc += "\n" + (tfAddress.getText().equals("")?"N/A":tfAddress.getText());
             newAcc += "\n" + (tfEmailAddress.getText().equals("") ? "N/A" : tfEmailAddress.getText());
             newAcc += "\n" + tfMobileNumber.getText();
-            newAcc += "\n"+(rbMale.isSelected() ? "Male" : "Female");
+            newAcc += "\n"+gender;
 
             writer.write(newAcc);
             writer.close();
@@ -102,10 +105,7 @@ public class POSCustomerAccountForm extends POSCustomerAccount {
     }
 
     private boolean hasEmptyField(){
-        return tfFirstName.getText().equals("") ||
-                tfLastName.getText().equals("") ||
-                tfMobileNumber.getText().equals("") ||
-                tfAddress.getText().equals("") ||
+        return tfMobileNumber.getText().equals("") ||
                 !(rbFemale.isSelected() || rbMale.isSelected());
     }
 

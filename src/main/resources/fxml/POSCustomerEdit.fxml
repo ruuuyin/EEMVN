@@ -50,7 +50,7 @@
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </HBox.margin>
                               </Label>
-                              <TextField fx:id="tfFirstName" alignment="CENTER" prefHeight="31.0" prefWidth="303.0" promptText="Required">
+                              <TextField fx:id="tfFirstName" alignment="CENTER" prefHeight="31.0" prefWidth="303.0" promptText="Optional">
                                  <HBox.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </HBox.margin>
@@ -84,7 +84,7 @@
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </HBox.margin>
                               </Label>
-                              <TextField fx:id="tfLastName" alignment="CENTER" prefHeight="31.0" prefWidth="304.0" promptText="Required">
+                              <TextField fx:id="tfLastName" alignment="CENTER" prefHeight="31.0" prefWidth="304.0" promptText="Optional">
                                  <HBox.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </HBox.margin>
@@ -165,7 +165,7 @@
                         </HBox>
                         <HBox prefHeight="45.0" prefWidth="540.0">
                            <children>
-                              <TextField fx:id="tfAddress" alignment="CENTER" prefHeight="32.0" prefWidth="580.0" promptText="Required">
+                              <TextField fx:id="tfAddress" alignment="CENTER" prefHeight="32.0" prefWidth="580.0" promptText="Optional">
                                  <HBox.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </HBox.margin>

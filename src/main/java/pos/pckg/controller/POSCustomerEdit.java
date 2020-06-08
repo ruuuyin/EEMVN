@@ -76,15 +76,20 @@ public class POSCustomerEdit extends POSCustomerAccount {
             Scanner scan = new Scanner(new FileInputStream(BackgroundProcesses.getFile(DataBridgeDirectory.DOCUMENT+"etc\\cache-selected-customer.file")));
             customerID = Integer.parseInt(scan.nextLine());
             lblCustomerID.setText("ID : "+customerID);
-            tfFirstName.setText(scan.nextLine());
-            tfMiddleInitial.setText(scan.nextLine());
-            tfLastName.setText(scan.nextLine());
+            String fname = scan.nextLine();
+            String mname = scan.nextLine();
+            String lname = scan.nextLine();
+            tfFirstName.setText(fname.equals("N/A")?"":fname);
+            tfMiddleInitial.setText(mname.equals("N/A")?"":mname);
+            tfLastName.setText(lname.equals("N/A")?"":lname);
             if(scan.nextLine().equals("Male"))
                 rbMale.setSelected(true);
             else
                 rbFemale.setSelected(false);
 
-            tfAddress.setText(scan.nextLine());
+            String addr = scan.nextLine();
+
+            tfAddress.setText(addr.equals("N/A")?"":addr);
             tfMobileNumber.setText(scan.nextLine());
             String email = scan.nextLine();
             tfEmailAddress.setText(email.equals("N/A")?"":email);
@@ -119,11 +124,11 @@ public class POSCustomerEdit extends POSCustomerAccount {
             JFXButton btnYes = new JFXButton("Yes");// Confirmation button - "Yes"
             btnYes.setOnAction(ev -> {
 
-                String sql = "Update Customer Set firstName = '"+tfFirstName.getText()+"',"+
-                        "middleInitial = '"+tfMiddleInitial.getText()+"',"+
-                        "lastName = '"+tfLastName.getText()+"',"+
+                String sql = "Update Customer Set firstName = '"+(tfFirstName.getText().equals("")?"N/A":tfFirstName.getText())+"',"+
+                        "middleInitial = '"+(tfMiddleInitial.getText().equals("")?"N/A":tfMiddleInitial.getText())+"',"+
+                        "lastName = '"+(tfLastName.getText().equals("")?"N/A":tfLastName.getText())+"',"+
                         "sex = '"+(rbMale.isSelected()?"Male":"Female")+"',"+
-                        "address = '"+tfAddress.getText()+"',"+
+                        "address = '"+(tfAddress.getText().equals("")?"N/A":tfAddress.getText())+"',"+
                         "phonenumber = '"+tfMobileNumber.getText()+"',"+
                         "emailAddress = '"+(tfEmailAddress.getText().equals("")?"N/A":tfEmailAddress.getText())+"'"+
                         "Where customerID = "+this.customerID;
